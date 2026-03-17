@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spike Trend Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+    <style>
+        body {
+            font-family: 'Malgun Gothic', sans-serif;
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .chart-container {
+            width: 900px;
+            background-color: white;
+            padding: 20px 20px 30px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        /* 🚨 오류 수정 핵심: 캔버스 래퍼에 상대 위치와 고정 높이 부여 */
+        .canvas-wrapper {
+            position: relative;
+            height: 400px; /* 원하는 차트 높이로 설정 가능 */
+            width: 100%;
+        }
+        /* 커스텀 범례 스타일 */
+        .custom-legend {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 15px;
+            margin-left: 50px;
+            font-weight: bold;
+            color: #555;
+            font-size: 14px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .legend-color-line {
+            width: 25px;
+            height: 4px;
+            background-color: #b92d44;
+        }
+        .legend-color-box {
+            width: 25px;
+            height: 14px;
+            background-color: rgba(185, 45, 68, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+<div class="chart-container">
+    <div class="custom-legend">
+        <div class="legend-item">
+            <div class="legend-color-line"></div>
+            <span>Spike 추세 예측값¹</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-color-box"></div>
+            <span>Spike 가능 범위²</span>
+        </div>
+    </div>
+    
+    <div class="canvas-wrapper">
+        <canvas id="spikeChart"></canvas>
+    </div>
+</div>
+
+<script>
+    // X축 데이터 (날짜)
+    const labels = [
+        '26.2.1', '26.2.10', '26.2.20', '26.2.28', '26.3.8', 
+        '26.3.10', '26.3.15', '26.3.20', '26.3.31', '26.4.10', 
+        '26.4.20', '26.4.30', '26.5.10', '26.5.20', '26.5.31'
+    ];
+
+    // 데이터 세트 (이미지와 유사한 곡선을 그리도록 근사치 적용)
+    const dataHistorical = [-0.2, -0.1, -0.2, -0.8, -0.6, 1.6, null, null, null, null, null, null, null, null, null];
+    const dataPredict = [null, null, null, null, null, 1.6, 1.4, 1.1, 1.2, 0.6, 0.3, 0.4, 0.1, 0.1, -0.1];
+    
+    // 가능 범위(밴드)를 그리기 위한 상단/하단 경계 데이터
+    const dataUpper = [null, null, null, null, null, 1.6, 1.8, 1.7, 1.6, 1.3, 1.0, 1.1, 0.9, 0.9, 0.6];
+    const dataLower = [null, null, null, null, null, 1.6, 0.8, 0.6, -0.4, -0.3, -0.8, -0.6, -0.5, -0.8, -1.2];
+
+    const ctx = document.getElementById('spikeChart').getContext('2d');
+
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'Upper Bound',
+                    data: dataUpper,
+                    borderColor: 'transparent',
+                    pointRadius: 0,
+                    fill: false
+                },
+                {
+                    label: 'Lower Bound',
+                    data: dataLower,
+                    borderColor: 'transparent',
+                    backgroundColor: 'rgba(185, 45, 68, 0.25)', 
+                    fill: '-1', 
+                    pointRadius: 0
+                },
+                {
+                    label: 'Predicted',
+                    data: dataPredict,
+                    borderColor: '#b92d44',
+                    borderWidth: 3,
+                    pointRadius: 0,
+                    tension: 0.3 
+                },
+                {
+                    label: 'Historical',
+                    data: dataHistorical,
+                    borderColor: '#666666',
+                    borderWidth: 3,
+                    pointRadius: 0,
+                    tension: 0.3
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false, // 이 옵션을 위해 wrapper에 높이를 고정했습니다.
+            layout: {
+                padding: { right: 20 }
+            },
+            plugins: {
+                legend: { display: false },
+                annotation: {
+                    annotations: {
+                        spikeVertical: {
+                            type: 'line',
+                            xMin: '26.3.10',
+                            xMax: '26.3.10',
+                            yMin: -2,
+                            yMax: 1.6,
+                            borderColor: '#3d8b40',
+                            borderWidth: 2,
+                            borderDash: [5, 5],
+                            arrowHeads: {
+                                end: { display: true, fill: true, backgroundColor: '#3d8b40' }
+                            }
+                        },
+                        spikeText: {
+                            type: 'label',
+                            xValue: '26.3.10',
+                            yValue: -1.7,
+                            content: 'Spike Point (26.3.10)',
+                            color: '#3d8b40',
+                            font: { size: 14, weight: 'bold' },
+                            xAdjust: 75,
+                        },
+                        horizontalLine: {
+                            type: 'line',
+                            yMin: 1.6,
+                            yMax: 1.6,
+                            xMin: '26.3.10',
+                            xMax: '26.5.31',
+                            borderColor: '#3d8b40',
+                            borderWidth: 3,
+                            borderDash: [8, 8]
+                        },
+                        gapArrow: {
+                            type: 'line',
+                            xMin: '26.5.20',
+                            xMax: '26.5.20',
+                            yMin: 0.1,
+                            yMax: 1.6,
+                            borderColor: '#b92d44',
+                            borderWidth: 2,
+                            arrowHeads: {
+                                start: { display: true, fill: true, backgroundColor: '#b92d44' },
+                                end: { display: true, fill: true, backgroundColor: '#b92d44' }
+                            }
+                        },
+                        gapText: {
+                            type: 'label',
+                            xValue: '26.5.10',
+                            yValue: 0.85,
+                            content: '+$1.5',
+                            color: '#b92d44',
+                            font: { size: 16, weight: 'bold' },
+                            backgroundColor: 'rgba(255,255,255,0.7)',
+                            padding: 2
+                        }
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    min: -2,
+                    max: 2,
+                    ticks: {
+                        stepSize: 1
+                    },
+                    title: {
+                        display: true,
+                        text: 'Unit: $/MMBtu',
+                        font: { weight: 'bold', size: 13 }
+                    },
+                    grid: { color: '#e0e0e0' }
+                },
+                x: {
+                    grid: {
+                        display: true,
+                        color: '#e0e0e0',
+                        drawBorder: true
+                    },
+                    ticks: {
+                        callback: function(value, index, values) {
+                            const label = labels[index];
+                            if (['26.2.1', '26.2.28', '26.3.31', '26.4.30', '26.5.31'].includes(label)) {
+                                return label;
+                            }
+                            return '';
+                        },
+                        font: { weight: 'bold' }
+                    }
+                }
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
