@@ -6,6 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TAM</title>
   <link rel="stylesheet" href="./css/tam_style.css" />
+  <link rel="stylesheet" href="./css/tam_chart.css" />
+
+  <script src="js/chart.js"></script>
+  <script src="js/chartjs-plugin-annotation3.0.1.min.js"></script>
 </head>
 
 <body>
@@ -85,7 +89,22 @@
           <span class="red"></span>Spike 판별 그래프
           <span class="gray">(JKM '27년 2월물 - 5월물)</span>
         </div>
-        <div class="chart"></div>
+        <div class="chart chart-container">
+          <div class="custom-legend">
+            <div class="legend-item">
+              <div class="legend-color-line"></div>
+              <span>Spike 추세 예측값</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color-box"></div>
+              <span>Spike 가능 범위</span>
+            </div>
+          </div>
+          <div class="canvas-wrapper">
+            <canvas id="spikeChart" width="680" height="228"></canvas>
+            <script src="js/tam-spike.js"></script>
+          </div>
+        </div>
         <div class="dashed_line"></div>
 
         <div class="sub_tit flex_start">

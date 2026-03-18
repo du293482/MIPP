@@ -11,6 +11,10 @@
   <link rel="stylesheet" type="text/css" href="./css/basic.css">
   <link rel="stylesheet" type="text/css" href="./css/sideBar.css">
   <link rel="stylesheet" type="text/css" href="./css/contents.css">
+  <link rel="stylesheet" type="text/css" href="./css/mi_chart.css">
+
+  <script src="js/chart.js"></script>
+  <script src="js/chartjs-plugin-annotation1.4.js"></script>
 
 </head>
 
@@ -42,9 +46,13 @@
           </div>
           <!-- 차트 -->
           <div class="chart-container" id="chart-container">
-            <div class="chart-panel active" data-content="1">JKM 차트 내용</div>
-            <div class="chart-panel" data-content="2">HH 차트 내용</div>
-            <div class="chart-panel" data-content="3">TTF 차트 내용</div>
+            <div class="chart-panel jkm active" id="jkm-chart" data-content="1">
+              <canvas id="mi-view-canvas" width="580" height="640"></canvas>
+              <div id="custom-legend"></div>
+              <script src="js/mi-view.js"></script>
+            </div>
+            <div class="chart-panel hh" data-content="2">HH 차트 내용</div>
+            <div class="chart-panel ttf" data-content="3">TTF 차트 내용</div>
           </div>
           <!-- 설명 -->
           <ul class="explain">

@@ -1,0 +1,32 @@
+#jkm-chart {
+    /*width: 900px;*/
+    /*margin: 40px auto;*/
+    position: relative;
+}
+
+#custom-legend {
+    position: absolute;
+    top: 40px;
+    right: 20px;
+    background: rgba(255,255,255,0.9);
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 13px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 6px;
+    cursor: pointer;
+}
+
+.legend-item.inactive {
+    opacity: 0.4;
+}
+
+.legend-color {
+    width: 18px;
+    height: 3px;
+    margin-right: 8px;
+}

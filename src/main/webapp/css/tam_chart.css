@@ -1,0 +1,40 @@
+.chart-container {
+    /*width: 900px;*/
+    /*background-color: white;*/
+    /*padding: 20px 20px 30px 20px;*/
+    /*border-radius: 8px;*/
+    /*box-shadow: 0 4px 6px rgba(0,0,0,0.1);*/
+}
+
+.canvas-wrapper {
+    position: relative;
+    height: 228px;
+    width: 100%;
+}
+/* 커스텀 범례 스타일 */
+.custom-legend {
+    display: flex;
+    gap: 30px;
+    /*margin-bottom: 15px;*/
+    margin-top: 5px;
+    margin-left: 50px;
+    font-weight: bold;
+    color: #555;
+    font-size: 14px;
+}
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 150px;
+}
+.legend-color-line {
+    width: 25px;
+    height: 4px;
+    background-color: #b92d44;
+}
+.legend-color-box {
+    width: 25px;
+    height: 14px;
+    background-color: rgba(185, 45, 68, 0.3);
+}
