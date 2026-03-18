@@ -1,0 +1,274 @@
+@charset "UTF-8";
+/* 콘텐츠 영역 */
+/* 최상단 주차 css */
+.week1 {
+  display: flex;
+  height: 100%;
+}
+.week1 .left {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+.week1 .left .title {
+  font-size: 21px;
+  font-weight: bold;
+  color: #ea002c;
+  margin-bottom: 15px;
+}
+.week1 .left .chart-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  font-size: 20px;
+  font-weight: 600;
+  width: 580px;
+  height: 640px;
+  min-height: 640px;
+  border: 1px solid #e4e5e5;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+.week1 .left .explain {
+  list-style: disc;
+  display: flex;
+  max-width: 580px;
+  overflow-y: auto;
+  height: 100%;
+  flex-direction: column;
+  row-gap: 5px;
+  font-weight: bold;
+  background-color: #f2f4f6;
+  border-radius: 10px;
+  padding: 15px 15px 15px 35px;
+  overflow-y: auto;
+}
+.week1 .right {
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  background-color: #ebebeb;
+  min-width: 1100px;
+}
+.week1 .right .event {
+  display: flex;
+  row-gap: 10px;
+  flex-direction: column;
+}
+.week1 .right .event .title {
+  font-size: 21px;
+  font-weight: bold;
+}
+.week1 .right .event .details {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+.week1 .right .event .details .item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 21px;
+  font-weight: bold;
+  background-color: #ffffff;
+  height: 100px;
+  border: 5px solid #d9d9d9;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.week1 .right .event .details .item.active {
+  border-color: #ea002c;
+  color: #ea002c;
+}
+.week1 .right .event .details .item:hover::after, .week1 .right .event .details .item:hover::before {
+  opacity: 1;
+  visibility: visible;
+}
+.week1 .right .view {
+  display: flex;
+  row-gap: 10px;
+  flex-direction: column;
+}
+.week1 .right .view .title {
+  font-size: 21px;
+  font-weight: bold;
+}
+.week1 .right .view .details {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  padding: 15px;
+  border-radius: 10px;
+  position: relative;
+}
+.week1 .right .view .details .inner-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+  padding: 0 0 0 5px;
+}
+.week1 .right .view .details .table-top {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  height: 50px;
+  color: #ffffff;
+  background-color: #000000;
+  border-radius: 10px 10px 0 0;
+}
+.week1 .right .view .details .table-area {
+  border-width: 0 1px 1px 1px;
+  border-style: solid;
+  border-color: #e4e5e5;
+  border-radius: 0 0 10px 10px;
+  overflow: hidden;
+}
+.week1 .right .view .details .table-area table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.week1 .right .view .details .table-area table thead tr th {
+  width: 33.33%;
+  background-color: #f2f4f6;
+  height: 50px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #ea002c;
+  border-bottom: 1px solid #e4e5e5;
+}
+.week1 .right .view .details .table-area table thead tr th:not(:last-child) {
+  border-right: 1px solid #e4e5e5;
+}
+.week1 .right .view .details .table-area table tbody tr td {
+  font-weight: bold;
+  text-align: center;
+  font-size: 18px;
+  color: #666666;
+  padding: 15px 10px;
+}
+.week1 .right .view .details .table-area table tbody tr td:not(:last-child) {
+  border-right: 1px solid #e4e5e5;
+}
+.week1 .right .view .details .table-area table tbody tr:not(:last-child) td {
+  border-bottom: 1px solid #e4e5e5;
+}
+.week1 .right .insight {
+  display: flex;
+  row-gap: 10px;
+  flex-direction: column;
+}
+.week1 .right .insight .title {
+  font-size: 21px;
+  font-weight: bold;
+}
+.week1 .right .insight .details {
+  display: flex;
+  list-style: disc;
+  flex-direction: column;
+  background-color: #ffffff;
+  padding: 15px 15px 15px 35px;
+  border-radius: 10px;
+}
+.week1 .right .detail-modal {
+  position: fixed;
+  bottom: 110px; /* 아이콘 위로 배치 */
+  right: 20px;
+  width: 500px;
+  background: white;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  display: none; /* 기본적으로 숨김 */
+  flex-direction: column;
+  z-index: 1000;
+  overflow: auto;
+  row-gap: 10px;
+}
+.week1 .right .detail-modal .title {
+  padding: 10px 0;
+  color: #ea002c;
+  border-radius: 10px;
+  font-size: 21px;
+  font-weight: 800;
+}
+.week1 .right .detail-modal .data1 h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #000;
+}
+.week1 .right .detail-modal .data1 ul li {
+  color: #666666;
+}
+.week1 .right .detail-modal.show {
+  display: flex;
+}
+.week1 .right .event-result {
+  position: fixed;
+  bottom: 110px; /* 아이콘 위로 배치 */
+  right: 20px;
+  width: 500px;
+  background: white;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  display: none; /* 기본적으로 숨김 */
+  flex-direction: column;
+  z-index: 1000;
+  overflow: auto;
+  row-gap: 10px;
+}
+.week1 .right .event-result .title {
+  padding: 10px 0;
+  color: #ea002c;
+  border-radius: 10px;
+  font-size: 21px;
+  font-weight: 800;
+}
+.week1 .right .event-result .details {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+}
+.week1 .right .event-result .details .sub-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #000;
+}
+.week1 .right .event-result .details table {
+  border-collapse: collapse;
+}
+.week1 .right .event-result .details table thead tr th {
+  width: 33.33%;
+  background-color: #f2f4f6;
+  height: 30px;
+  font-weight: bold;
+  color: #ea002c;
+}
+.week1 .right .event-result .details table thead tr th:not(:last-child) {
+  border-right: 1px solid #e4e5e5;
+}
+.week1 .right .event-result .details table tbody tr td {
+  font-weight: bold;
+  text-align: center;
+  color: #666666;
+  padding: 5px 5px;
+}
+.week1 .right .event-result .details table tbody tr td:not(:last-child) {
+  border-right: 1px solid #e4e5e5;
+}
+.week1 .right .event-result .details table tbody tr:not(:last-child) td {
+  border-bottom: 1px solid #e4e5e5;
+}
+.week1 .right .event-result.show {
+  display: flex;
+}/*# sourceMappingURL=contents.css.map */

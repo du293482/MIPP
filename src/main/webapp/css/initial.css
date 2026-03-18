@@ -1,0 +1,106 @@
+@charset "UTF-8";
+/* Thin (100) */
+@font-face {
+  font-family: "SUIT";
+  src: url("/font/SUIT-Thin.otf") format("opentype");
+  font-weight: 100;
+}
+/* ExtraLight (200) */
+@font-face {
+  font-family: "SUIT";
+  src: url("/font/SUIT-ExtraLight.otf") format("opentype");
+  font-weight: 200;
+}
+/* Light (300) */
+@font-face {
+  font-family: "SUIT";
+  src: url("/font/SUIT-Light.otf") format("opentype");
+  font-weight: 300;
+}
+/* Regular (400) */
+@font-face {
+  font-family: "SUIT";
+  src: url("/font/SUIT-Regular.otf") format("opentype");
+  font-weight: 400;
+}
+/* Medium (500) */
+@font-face {
+  font-family: "SUIT";
+  src: url("/font/SUIT-Medium.otf") format("opentype");
+  font-weight: 500;
+}
+/* SemiBold (600) */
+@font-face {
+  font-family: "SUIT";
+  src: url("/font/SUIT-SemiBold.otf") format("opentype");
+  font-weight: 600;
+}
+/* Bold (700) */
+@font-face {
+  font-family: "SUIT";
+  src: url("/font/SUIT-Bold.otf") format("opentype");
+  font-weight: 700;
+}
+/* ExtraBold (800) */
+@font-face {
+  font-family: "SUIT";
+  src: url("/font/SUIT-ExtraBold.otf") format("opentype");
+  font-weight: 800;
+}
+/* Heavy (900) */
+@font-face {
+  font-family: "SUIT";
+  src: url("/font/SUIT-Heavy.otf") format("opentype");
+  font-weight: 900;
+}
+/* css 초기화용 */
+/* 모든 요소에 box-sizing 설정 */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+/* 가독성 및 폰트 렌더링 최적화 */
+html {
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+     tab-size: 4;
+}
+
+/* 여백 제거 및 기본 폰트 설정 */
+body {
+  margin: 0;
+  overflow: hidden;
+  font-family: "SUIT", -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* 이미지의 어색한 하단 빈공간 제거 */
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* 폼 요소들이 폰트 상속을 받도록 설정 */
+button, input, optgroup, select, textarea {
+  font-family: inherit;
+  font-size: 100%;
+  margin: 0;
+}
+
+/* 리스트 점 제거 (필요할 때만) */
+ul, ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* 링크 밑줄 제거 및 색상 유지 */
+a {
+  text-decoration: none;
+  color: inherit;
+}/*# sourceMappingURL=initial.css.map */

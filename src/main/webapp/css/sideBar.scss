@@ -1,0 +1,50 @@
+// 사이드 바 전용 css 
+
+.side-bar {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    background-color: #ebebeb;
+    .title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 21px;
+        font-weight: bolder;
+        height: 60px;
+    }
+    .weeks-list {
+        display: flex;
+        row-gap: 1px;
+        flex-direction: column;
+        background-color: #ffffff;
+        .week-item {
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            padding: 0 10px 0 20px;
+            height: 60px;
+            background-color: #f2f4f6;
+            color: #aaaaaa;
+            cursor: pointer;
+            &.side-bar-active {
+                font-size: 18px;
+                position: relative;
+                font-weight: bold;
+                background-color: #ea002c;
+                color: #ffffff;
+                pointer-events: none;
+                &::after {
+                    content: "";
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                    bottom: 0;
+                    width: 10px;
+                    background-color: #ff2850;
+                }
+            }
+        }
+    }
+    
+}

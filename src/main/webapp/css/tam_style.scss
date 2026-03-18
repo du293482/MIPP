@@ -1,0 +1,567 @@
+/* 1. 모든 요소의 크기 계산 방식을 변경 (패딩, 테두리 포함) */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+@font-face {
+    font-family: "SUIT";
+    src: url("./font/SUIT-Thin.otf") format("opentype");
+    font-weight: 100;
+}
+
+/* ExtraLight (200) */
+@font-face {
+    font-family: "SUIT";
+    src: url("./font/SUIT-ExtraLight.otf") format("opentype");
+    font-weight: 200;
+}
+
+/* Light (300) */
+@font-face {
+    font-family: "SUIT";
+    src: url("./font/SUIT-Light.otf") format("opentype");
+    font-weight: 300;
+}
+
+/* Regular (400) */
+@font-face {
+    font-family: "SUIT";
+    src: url("./font/SUIT-Regular.otf") format("opentype");
+    font-weight: 400;
+}
+
+/* Medium (500) */
+@font-face {
+    font-family: "SUIT";
+    src: url("./font/SUIT-Medium.otf") format("opentype");
+    font-weight: 500;
+}
+
+/* SemiBold (600) */
+@font-face {
+    font-family: "SUIT";
+    src: url("./font/SUIT-SemiBold.otf") format("opentype");
+    font-weight: 600;
+}
+
+/* Bold (700) */
+@font-face {
+    font-family: "SUIT";
+    src: url("./font/SUIT-Bold.otf") format("opentype");
+    font-weight: 700;
+}
+
+/* ExtraBold (800) */
+@font-face {
+    font-family: "SUIT";
+    src: url("./font/SUIT-ExtraBold.otf") format("opentype");
+    font-weight: 800;
+}
+
+/* Heavy (900) */
+@font-face {
+    font-family: "SUIT";
+    src: url("./font/SUIT-Heavy.otf") format("opentype");
+    font-weight: 900;
+}
+
+/* 2. 기본 여백 제거 */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* 3. 리스트 스타일 제거 */
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+}
+
+/* 4. 이미지 및 미디어 요소 설정 */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* 5. 폰트 및 텍스트 렌더링 개선 */
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  font-family: 'SUIT', -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* 6. 입력 요소 폰트 상속 */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* start */
+
+/* 공통 */
+.sub_tit {
+  font-size: 20px;
+  //   margin-bottom: 15px;
+  font-weight: 600;
+  letter-spacing: -1px;
+  display: flex;
+  justify-content: flex-start;
+  gap: 8px;
+  align-items: center;
+  .red {
+    display: block;
+    width: 14px;
+    height: 20px;
+    background: #ea002c;
+    border-radius: 43%;
+  }
+  .gray {
+    color: #aaaaaa;
+    font-size: 16px;
+  }
+}
+.dashed_line {
+  width: 100%;
+  border: 1px dashed #e4e5e5;
+}
+.explain_part {
+  background-color: #f2f4f6;
+  border-radius: 5px;
+  padding: 15px;
+  overflow: auto;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e4e5e5;
+  gap: 5px;
+  .red_tit {
+    color: #ea002c;
+    font-size: 21px;
+    font-weight: 500;
+    border-bottom: 2px solid #ea002c;
+    padding: 0 0 5px;
+    margin: 0 0 5px;
+  }
+
+  /* 1. 스크롤바 전체 너비 설정 (얇게) */
+  &::-webkit-scrollbar {
+    width: 6px; /* 세로 스크롤바 너비 */
+    height: 6px; /* 가로 스크롤바 높이 */
+  }
+
+  /* 2. 스크롤바 화살표 버튼 제거 */
+  &::-webkit-scrollbar-button {
+    display: none;
+  }
+
+  /* 3. 스크롤바 트랙(바탕) 설정 */
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 5px;
+  }
+
+  /* 4. 스크롤바 핸들(움직이는 부분) 설정 */
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+  }
+
+  /* 5. 마우스 올렸을 때 핸들 색상 변경 */
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+  p {
+    word-break: keep-all;
+    padding-left: 5px; /* 글자 1.5개 분량 내어쓰기 */
+    text-indent: -15px;
+  }
+}
+
+.chart {
+  width: 100%;
+  height: 200px;
+  border: 1px solid #ddd;
+  overflow: auto;
+}
+
+.table_area {
+  width: 100%;
+  border: 1px solid #e4e5e5;
+  border-radius: 5px;
+  overflow: hidden;
+  font-weight: 500;
+  table {
+    text-align: center;
+    width: 100%;
+    border-collapse: collapse;
+
+    th {
+      padding: 10px;
+      background: #f2f4f6;
+      color: #ea002c;
+      border-right: 1px solid #e4e5e5;
+      border-bottom: 1px solid #e4e5e5;
+      &:last-child {
+        border-right: 0px;
+        td {
+        }
+      }
+    }
+    tr {
+      // border: 1px solid #e4e5e5;
+      td {
+        padding: 10px 0;
+        border-left: 1px solid #e4e5e5;
+        border-bottom: 1px solid #e4e5e5;
+        gap: 3px;
+        &.td_first {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          gap: 20px;
+          padding: 10px 10px;
+        }
+        .line {
+          width: 30px;
+          height: 3px;
+          background-color: #212121;
+          display: block;
+          &.green {
+            background: #80db86;
+          }
+        }
+        &:first-child {
+          border-left: 0px;
+        }
+      }
+      &:last-child {
+        td {
+          border-bottom: 0px;
+        }
+      }
+      &.tr_act {
+        cursor: pointer;
+      }
+      &.active {
+        font-weight: 600;
+        color: #000;
+
+        &.red {
+          background: #ea002c;
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+.wrap {
+  width: 100%;
+  margin: 0 auto;
+  // padding: 20px;
+  // height: 100%;
+  font-size: 16px;
+  overflow: auto;
+  background: #f2f4f6;
+  position: relative;
+}
+/* 챗봇 아이콘 위치 */
+.bot {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  z-index: 1000;
+  cursor: pointer;
+  background: #ea002c url("./images/bot.png") center / 50% no-repeat;
+}
+
+/* 챗봇 창 기본 스타일 */
+.chat-window {
+  position: fixed;
+  bottom: 110px; /* 아이콘 위로 배치 */
+  right: 20px;
+  width: 500px;
+  height: 500px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  display: none; /* 기본적으로 숨김 */
+  flex-direction: column;
+  z-index: 1000;
+  overflow: auto;
+}
+
+/* 활성화되었을 때 보여주기 */
+.chat-window.show {
+  display: flex;
+}
+.chat-content {
+  padding: 20px;
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+
+  .left {
+    display: flex;
+    gap: 15px;
+
+    .bot_left {
+      width: 40px;
+      height: 40px;
+      border-radius: 20px 20px 0px 20px;
+      background: #ea002c url("./images/bot.png") center / 50% no-repeat;
+    }
+    .contents {
+      width: 75%;
+      border: 1px solid #000;
+      border-radius: 5px;
+      padding: 10px;
+    }
+  }
+  .right {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+    .contents {
+      background: #e4e9ef;
+      width: 75%;
+      border-radius: 5px;
+      padding: 10px;
+      border: 1px solid #e4e5e5;
+    }
+    .human_right {
+      width: 40px;
+      height: 40px;
+      background: #000 url("./images/human.png") center / 50% no-repeat;
+      border-radius: 20px 20px 20px 0px;
+    }
+  }
+  .search {
+    width: 100%;
+    height: 50px;
+    border: 1px solid #aaa;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding: 10px 10px;
+    justify-content: space-between;
+    color: #818181;
+  }
+  .send_icon {
+    width: 40px;
+    height: 40px;
+    background: #c4c4c4 url("./images/send.png") center / 50% no-repeat;
+    border-radius: 50px;
+  }
+}
+/* 탭 메뉴 스타일 */
+.tab-list {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  border-bottom: 1px solid #ea002c;
+  width: 100%;
+  //   background: #f2f4f6;
+  justify-content: space-between;
+}
+.toggle_menu {
+  display: flex;
+  border: 1px solid #ddd;
+  padding: 5px;
+  justify-content: space-around;
+  border-radius: 45px;
+  width: 100%;
+  gap: 5px;
+  font-size: 20px;
+  margin: 20px 10px 0;
+  font-weight: 700;
+  color: #bfbfbf;
+  div {
+    width: 49%;
+    padding: 15px 20px;
+    height: 100%;
+    border-radius: 45px;
+    &.active {
+      transition: 0.2s;
+      color: #fff;
+      background: #ea002c;
+    }
+  }
+}
+.tab-item {
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-bottom: -1px; /* 하단 보더 겹치기 */
+  width: 49.8%;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 5px 5px 0 0;
+  font-size: 16px;
+  background: #f2f4f6;
+  font-size: 22px;
+  border-bottom: 1px solid #ea002c;
+}
+
+/* 활성화된 탭 스타일 */
+// .tab-item.active {
+//   color: #ea002c;
+//   border: 1px solid #ea002c;
+//   border-bottom: 0px;
+//   font-weight: bold;
+// }
+
+/* 콘텐츠 표시 제어 */
+
+.tab-content {
+  padding: 20px;
+  //   border: 1px solid #ddd;
+  border-top: none;
+  // background: #f2f4f6;
+  // border: 1px solid #ea002c;
+  border-top: 0;
+  border-radius: 0 0 10px 10px;
+
+  &.tab {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    gap: 40px;
+    height: 100vh;
+    .tab_area {
+      padding: 20px;
+      background-color: #fff;
+      gap: 20px;
+      display: flex;
+      flex-direction: column;
+      border-radius: 5px;
+      &.left {
+        font-size: 16px;
+        width: 25%;
+        text-align: center;
+        gap: 0;
+        .button_area {
+          margin-top: 20px;
+          display: flex;
+          gap: 15x;
+          flex-direction: column;
+          button {
+            padding: 10px 15px;
+            margin-bottom: 10px;
+            font-size: 22px;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #aaaaaa;
+            cursor: pointer;
+            &.active {
+              background: #000;
+              color: #fff;
+            }
+
+            &:last-child {
+              margin-bottom: 0;
+            }
+
+            .num {
+              font-weight: 700;
+              padding: 5px 10px;
+              color: #ea002c;
+              background: #fff;
+              border-radius: 5px;
+            }
+          }
+        }
+        .sub_tit {
+          justify-content: center;
+        }
+      }
+      &.mid {
+        width: 35%;
+        margin: 0 auto;
+        .chart {
+          // height: 250px;
+        }
+        .table_area {
+          table {
+            th {
+              width: 20%;
+            }
+          }
+        }
+      }
+      &.right {
+        width: 40%;
+        .sub_tit {
+          &.bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          }
+
+          > div {
+            gap: 8px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+          }
+          .title_btn {
+            display: flex;
+            button {
+              border-radius: 50px;
+              padding: 3px 10px;
+              background: #fff;
+              border: 1px solid #000;
+              &.active {
+                background: #000;
+                color: #fff;
+              }
+            }
+          }
+        }
+        .devide {
+          display: flex;
+          gap: 10px;
+          .part {
+            width: 50%;
+            gap: 10px;
+            display: flex;
+            flex-direction: column;
+            .table_area {
+              table {
+                tr {
+                  td {
+                    padding: 17px 0;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
