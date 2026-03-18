@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>동북아 LNG 수요 차트</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff;
+    }
+    #chart-container {
+      width: 700px;
+      margin: 40px auto;
+    }
+  </style>
+</head>
+<body>
+  <div id="chart-container">
+    <canvas id="lngChart"></canvas>
+  </div>
+
+  <script>
+    const ctx = document.getElementById('lngChart').getContext('2d');
+
+    const data = {
+      labels: [
+        '26.2.1','26.2.5','26.2.10','26.2.15','26.2.20',
+        '26.2.25','26.2.28','26.3.5','26.3.10'
+      ],
+      datasets: [{
+        label: 'LNG 수요',
+        data: [19, 18.5, 20, 19, 22, 23, 24, 23, 22],
+        borderColor: '#555',
+        borderWidth: 3,
+        tension: 0.3,
+        pointRadius: function(context) {
+          return context.dataIndex === 8 ? 6 : 0; // 스파이크 포인트 강조
+        },
+        pointBackgroundColor: function(context) {
+          return context.dataIndex === 8 ? 'green' : 'transparent';
+        }
+      }]
+    };
+
+    const config = {
+      type: 'line',
+      data: data,
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: false },
+          title: {
+            display: true,
+            text: '동북아 LNG 수요 (단위: Mt)',
+            font: {
+              size: 20
+            }
+          },
+          tooltip: {
+            enabled: true
+          }
+        },
+        scales: {
+          y: {
+            min: 10,
+            max: 30,
+            ticks: {
+              stepSize: 10
+            }
+          },
+          x: {
+            grid: {
+              display: false
+            }
+          }
+        }
+      },
+      plugins: [{
+        id: 'customText',
+        afterDraw(chart) {
+          const {ctx} = chart;
+
+          ctx.save();
+          ctx.font = '16px Arial';
+          ctx.fillStyle = 'green';
+
+          // IZ 텍스트
+          ctx.fillText('|Z| : 1.7', 80, 300);
+
+          // Spike Point 텍스트
+          ctx.fillText('Spike Point', 450, 150);
+          ctx.fillText('(26.3.10)', 450, 170);
+
+          ctx.restore();
+        }
+      }]
+    };
+
+    new Chart(ctx, config);
+  </script>
+</body>
+</html>
