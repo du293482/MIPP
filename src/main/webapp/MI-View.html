@@ -12,6 +12,8 @@
   <link rel="stylesheet" type="text/css" href="./css/sideBar.css">
   <link rel="stylesheet" type="text/css" href="./css/contents.css">
 
+  <script type="text/javascript" src="/js/chart.js" charset="UTF-8"></script>
+
 </head>
 
 <body id="root">
@@ -34,8 +36,11 @@
         <div class="left">
           <!-- 제목 -->
           <h2 class="title">26년 JKM 월물 가격전망</h2>
-          <!-- 차트 -->
-          <div class="chart-area">차트영역</div>
+          <!-- 차트 width: 580px height: 640px-->
+          <div class="chart-area">
+            <canvas id="mi-view-canvas"></canvas>
+            <script type="text/javascript" src="/js/mi-view.js" charset="UTF-8"></script>
+          </div>
           <!-- 설명 -->
           <ul class="explain">
             <li>CME 가격이 3월 1주차 $14.0 -> 2주차 $18.5 -> 3주차 $17.3으로 급등 후 감소</li>
