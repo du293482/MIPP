@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Interactive Chart</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@1.4.0"></script>
+
+    <style>
+        body {
+            font-family: Arial;
+        }
+
+        #chart-container {
+            width: 900px;
+            margin: 40px auto;
+            position: relative;
+        }
+
+        #custom-legend {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.9);
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 13px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 6px;
+            cursor: pointer;
+        }
+
+        .legend-item.inactive {
+            opacity: 0.4;
+        }
+
+        .legend-color {
+            width: 18px;
+            height: 3px;
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="chart-container">
+    <canvas id="myChart"></canvas>
+    <div id="custom-legend"></div>
+</div>
+
+<script>
+    const ctx = document.getElementById('myChart').getContext('2d');
+
+    const datasets = [
+        {
+            label: 'CME 가격 - 점선',
+            data: [14.0, 16.5, 14.5, 13.8, 13.6],
+            borderColor: '#cccccc',
+            borderDash: [6,6],
+            tension: 0.4
+        },
+        {
+            label: 'CME 가격 - 회색',
+            data: [20.5, 19.0, 18.2, 17.8, 17.6],
+            borderColor: '#999999',
+            borderDash: [6,6],
+            tension: 0.4
+        },
+        {
+            label: 'All Base',
+            data: [16.0, 20.2, 18.5, 17.5, 16.8],
+            borderColor: '#f4b400',
+            borderWidth: 3,
+            tension: 0.4
+        },
+        {
+            label: 'MI Base',
+            data: [15.5, 19.2, 17.0, 16.2, 15.8],
+            borderColor: '#7cb342',
+            borderWidth: 3,
+            tension: 0.4
+        }
+    ];
+
+    const chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['5일', '7일', '9일', '11일', '13일'],
+            datasets: datasets
+        },
+        options: {
+            plugins: {
+                legend: { display: false }
+            },
+            interaction: {
+                mode: 'nearest',
+                intersect: false
+            },
+            scales: {
+                y: {
+                    min: 13,
+                    max: 22
+                }
+            }
+        }
+    });
+
+    // 🔥 커스텀 legend 생성 + 인터랙션
+    const legendContainer = document.getElementById('custom-legend');
+
+    datasets.forEach((ds, index) => {
+        const item = document.createElement('div');
+        item.className = 'legend-item';
+
+        const colorBox = document.createElement('div');
+        colorBox.className = 'legend-color';
+
+        if (ds.borderDash) {
+            colorBox.style.borderTop = '3px dashed ' + ds.borderColor;
+        } else {
+            colorBox.style.background = ds.borderColor;
+        }
+
+        const label = document.createElement('span');
+        label.innerText = ds.label;
+
+        item.appendChild(colorBox);
+        item.appendChild(label);
+        legendContainer.appendChild(item);
+
+        // ✅ 클릭 → on/off
+        item.onclick = () => {
+            const meta = chart.getDatasetMeta(index);
+            meta.hidden = meta.hidden === null ? !chart.data.datasets[index].hidden : null;
+
+            item.classList.toggle('inactive');
+            chart.update();
+        };
+
+        // ✅ hover → 강조
+        item.onmouseenter = () => {
+            chart.data.datasets.forEach((d, i) => {
+                d.borderWidth = i === index ? 5 : 1;
+                d.borderColor = i === index ? d.borderColor : d.borderColor + '55';
+            });
+            chart.update();
+        };
+
+        item.onmouseleave = () => {
+            chart.data.datasets.forEach((d) => {
+                d.borderWidth = 3;
+                d.borderColor = d.borderColor.replace('55','');
+            });
+            chart.update();
+        };
+    });
+</script>
+
+</body>
+</html>
