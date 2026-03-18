@@ -20,8 +20,11 @@
   cursor: pointer;
   width: 80px;
   height: 80px;
-  background-color: #ea002c;
+  background-color: #595959;
   border-radius: 50px;
+}
+.bot-area .bot-img.on {
+  background-color: #ea002c;
 }
 .bot-area .bot-img::after {
   content: "";

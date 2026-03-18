@@ -9,13 +9,54 @@
         flex-direction: column;
         padding: 20px;
         .title {
-            font-size: 21px;
-            font-weight: bold;
-            color: #ea002c;
-            margin-bottom: 15px;
-        }
-        .chart-area {
             display: flex;
+            align-items: center;
+            column-gap: 8px;
+            font-size: 26px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            .red {
+                width: 14px;
+                height: 20px;
+                background: #ea002c;
+                border-radius: 43%;
+            }
+        }
+        .chart-tab-list {
+            display: flex;
+            column-gap: 3px;
+            .chart-tab-item {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 26px;
+                color: #aaaaaa;
+                background-color: #f2f4f6;
+                border: 1px solid #e4e5e5;
+                border-bottom: 0;
+                border-radius: 10px 10px 0 0;
+                width: 120px;
+                height: 45px;
+                cursor: pointer;
+                &.chart-tab-active {
+                    background-color: #ffffff;
+                    color: #ea002c;
+                    font-weight: 700;
+                    position: relative;
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        bottom: -1px;
+                        left: 0;
+                        right: 0;
+                        height: 1px;
+                        background-color: #ffffff;
+                    }
+                }
+            }
+        }
+        .chart-panel {
+            display: none; // 기본적으로 숨김
             justify-content: center;
             align-items: center;
             overflow: hidden;
@@ -25,8 +66,11 @@
             height: 640px;
             min-height: 640px;
             border: 1px solid #e4e5e5;
-            border-radius: 10px;
+            border-radius: 0 0 10px 10px;
             margin-bottom: 20px;
+            &.active {
+                display: flex; // active 클래스가 붙으면 표시
+            }
         }
         .explain {
             list-style: disc;
@@ -59,8 +103,17 @@
             flex-direction: column;
 
             .title {
-                font-size: 21px;
+                display: flex;
+                align-items: center;
+                column-gap: 8px;
+                font-size: 26px;
                 font-weight: bold;
+                .red {
+                    width: 14px;
+                    height: 20px;
+                    background: #ea002c;
+                    border-radius: 43%;
+                }
             }
             .details {
                 display: grid;
@@ -81,15 +134,48 @@
                     border-radius: 10px;
                     cursor: pointer;
 
-                    &.active {
-                        border-color: #ea002c;
-                        color: #ea002c;
-                    }
                     &:hover {
-                        &::after,
-                        &::before {
-                            opacity: 1;
-                            visibility: visible;
+                        border-color: #ea002c;
+                    }
+
+                    .hoverItem {
+                        display: none;
+                        position: absolute;
+                        &.active {
+                            top: 80%;
+                            z-index: 10;
+                            background-color: #595959;
+                            border-radius: 10px;
+                            padding: 10px;
+                            color: #ffffff;
+                            display: flex;
+                            flex-direction: column;
+                            row-gap: 5px;
+
+                            li {
+                                display: flex;
+                                flex-direction: column;
+                                row-gap: 3px;
+                                .sub-title {
+                                }
+                                .explain {
+                                    font-size: 14px;
+                                }
+                            }
+
+                            &::before {
+                                content: "";
+                                position: absolute;
+                                bottom: 100%;
+                                left: 50%;
+                                transform: translateX(-50%);
+                                /* 삼각형 핵심 설정 */
+                                width: 0;
+                                height: 0;
+                                border-bottom: 10px solid #595959; /* 밑변 (위로 향하는 삼각형) */
+                                border-left: 10px solid transparent;
+                                border-right: 10px solid transparent;
+                            }
                         }
                     }
                 }
@@ -101,8 +187,17 @@
             flex-direction: column;
 
             .title {
-                font-size: 21px;
+                display: flex;
+                align-items: center;
+                column-gap: 8px;
+                font-size: 26px;
                 font-weight: bold;
+                .red {
+                    width: 14px;
+                    height: 20px;
+                    background: #ea002c;
+                    border-radius: 43%;
+                }
             }
             .details {
                 display: flex;
@@ -111,7 +206,7 @@
                 padding: 15px;
                 border-radius: 10px;
                 position: relative;
-                
+
                 .inner-title {
                     font-weight: bold;
                     margin-bottom: 10px;
@@ -183,8 +278,17 @@
             row-gap: 10px;
             flex-direction: column;
             .title {
-                font-size: 21px;
+                display: flex;
+                align-items: center;
+                column-gap: 8px;
+                font-size: 26px;
                 font-weight: bold;
+                .red {
+                    width: 14px;
+                    height: 20px;
+                    background: #ea002c;
+                    border-radius: 43%;
+                }
             }
             .details {
                 display: flex;

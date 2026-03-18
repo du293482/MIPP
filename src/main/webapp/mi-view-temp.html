@@ -87,16 +87,84 @@
         }
     ];
 
+    const data = {
+        labels: ['5일', '7일', '9일', '11일', '13일'],
+        datasets: datasets
+    };
+
     const chart = new Chart(ctx, {
         type: 'line',
-        data: {
-            labels: ['5일', '7일', '9일', '11일', '13일'],
-            datasets: datasets
-        },
+        data: data,
         options: {
             plugins: {
-                legend: { display: false }
+                legend: { display: false },
+
+                annotation: {
+                    annotations: {
+
+                        avg1: {
+                            type: 'label',
+                            xValue: data.labels[1], // 7일
+                            yValue: datasets[1].data[1],  // 실제 값 사용
+                            xAdjust: 0,
+                            backgroundColor: 'rgba(200,200,200,0.9)',
+                            content: ['평균 $18.5'],
+                            color: '#333',
+                            padding: 6,
+                            borderRadius: 6
+                        },
+
+                        avg2: {
+                            type: 'label',
+                            xValue: data.labels[1],
+                            yValue: datasets[2].data[1],
+                            xAdjust: 20,
+                            backgroundColor: 'rgba(255,193,7,0.9)',
+                            content: ['평균 $18.0'],
+                            color: '#333',
+                            padding: 6,
+                            borderRadius: 6
+                        },
+
+                        avg3: {
+                            type: 'label',
+                            xValue: data.labels[2], // 9일
+                            xAdjust: 30,
+                            yValue: datasets[2].data[2],
+                            backgroundColor: 'rgba(150,150,150,0.9)',
+                            content: ['평균 $17.3'],
+                            color: '#fff',
+                            padding: 6,
+                            borderRadius: 6
+                        },
+
+                        avg4: {
+                            type: 'label',
+                            xValue: data.labels[2],
+                            yValue: datasets[3].data[2],
+                            xAdjust: 40,
+                            backgroundColor: 'rgba(124,179,66,0.9)',
+                            content: ['평균 $17.0'],
+                            color: '#fff',
+                            padding: 6,
+                            borderRadius: 6
+                        },
+
+                        avg5: {
+                            type: 'label',
+                            xValue: data.labels[2],
+                            yValue: datasets[0].data[2],
+                            xAdjust: 50,
+                            backgroundColor: 'rgba(220,220,220,0.9)',
+                            content: ['평균 $14.0'],
+                            color: '#666',
+                            padding: 6,
+                            borderRadius: 6
+                        }
+                    }
+                }
             },
+
             interaction: {
                 mode: 'nearest',
                 intersect: false
@@ -110,7 +178,7 @@
         }
     });
 
-    // 🔥 커스텀 legend 생성 + 인터랙션
+    // 🔥 커스텀 legend (기존 그대로)
     const legendContainer = document.getElementById('custom-legend');
 
     datasets.forEach((ds, index) => {
@@ -133,7 +201,6 @@
         item.appendChild(label);
         legendContainer.appendChild(item);
 
-        // ✅ 클릭 → on/off
         item.onclick = () => {
             const meta = chart.getDatasetMeta(index);
             meta.hidden = meta.hidden === null ? !chart.data.datasets[index].hidden : null;
@@ -142,7 +209,6 @@
             chart.update();
         };
 
-        // ✅ hover → 강조
         item.onmouseenter = () => {
             chart.data.datasets.forEach((d, i) => {
                 d.borderWidth = i === index ? 5 : 1;

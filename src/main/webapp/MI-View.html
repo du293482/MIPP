@@ -12,8 +12,6 @@
   <link rel="stylesheet" type="text/css" href="./css/sideBar.css">
   <link rel="stylesheet" type="text/css" href="./css/contents.css">
 
-  <script type="text/javascript" src="/js/chart.js" charset="UTF-8"></script>
-
 </head>
 
 <body id="root">
@@ -35,11 +33,18 @@
         <!-- 왼쪽 차트 관련 영역 -->
         <div class="left">
           <!-- 제목 -->
-          <h2 class="title">26년 JKM 월물 가격전망</h2>
-          <!-- 차트 width: 580px height: 640px-->
-          <div class="chart-area">
-            <canvas id="mi-view-canvas" width="580" height="640"></canvas>
-            <script type="text/javascript" src="/js/mi-view.js" charset="UTF-8"></script>
+          <h2 class="title"><span class="red"></span>26년 JKM 월물 가격전망</h2>
+          <!-- 차트 탭 -->
+          <div class="chart-tab-list" id="chart-tab-list">
+            <div class="chart-tab-item chart-tab-active" data-id="1">JKM</div>
+            <div class="chart-tab-item" data-id="2">HH</div>
+            <div class="chart-tab-item" data-id="3">TTF</div>
+          </div>
+          <!-- 차트 -->
+          <div class="chart-container" id="chart-container">
+            <div class="chart-panel active" data-content="1">JKM 차트 내용</div>
+            <div class="chart-panel" data-content="2">HH 차트 내용</div>
+            <div class="chart-panel" data-content="3">TTF 차트 내용</div>
           </div>
           <!-- 설명 -->
           <ul class="explain">
@@ -53,20 +58,57 @@
 
           <!-- Event -->
           <div class="event">
-            <h2 class="title">주요 가격 변동 요인 Event</h2>
+            <h2 class="title"><span class="red"></span>주요 가격 변동 요인 Event</h2>
             <ul class="details">
-              <li class="item">카타르 LNG ​생산 중단</li>
-              <li class="item">호르무즈 해협 LNG 운송 차질</li>
-              <li class="item">유럽향 LNG cargo 아시아로 전환</li>
-              <li class="item">중국 LNG 수요 둔화</li>
-              <li class="item">LNG 파생상품 거래량 증가</li>
-              <li class="item">유럽 재고 하락 및 Refill 부담 확대</li>
+              <li class="item">카타르 LNG ​생산 중단
+                <div class="hoverItem"></div>
+              </li>
+              <li class="item">호르무즈 해협 LNG 운송 차질
+                <div class="hoverItem"></div>
+              </li>
+              <li class="item">
+                유럽향 LNG cargo 아시아로 전환
+                <div class="hoverItem">
+
+                </div>
+              </li>
+              <li class="item">중국 LNG 수요 둔화
+                <ul class="hoverItem">
+                  <li>
+                    <p class="sub-title">25년 2분기</p>
+                    <div class="explain">
+                      중국 LNG 수입 약 20%이상 감소 <br /> 
+                      JKM $14 -> $12로 하락 이후 $13로 반등
+                    </div>
+                  </li>
+                  <li>
+                    <p class="sub-title">22년 2분기</p>
+                    <div class="explain">
+                      중국 도시봉쇄로 산업활동 둔화 및 LNG 수입 감소 <br /> 
+                      JKM $26 -> $22로 하락 이후 $29 수준으로 회복
+                    </div>
+                  </li>
+                  <li>
+                    <p class="sub-title">20년 1분기</p>
+                    <div class="explain">
+                      코로나 확산으로 중국 및 아시아 LNG 수요 금감 <br /> 
+                      JKM $4 -> $2.9로 하락 이후 $3.4 수준으로 소폭 회복
+                    </div>
+                  </li>
+                </ul>
+              </li>
+              <li class="item">LNG 파생상품 거래량 증가
+                <div class="hoverItem"></div>
+              </li>
+              <li class="item">유럽 재고 하락 및 Refill 부담 확대
+                <div class="hoverItem"></div>
+              </li>
             </ul>
           </div>
 
           <!-- View -->
           <div class="view">
-            <h2 class="title">MI Base 가격 전망 View</h2>
+            <h2 class="title"><span class="red"></span>MI Base 가격 전망 View</h2>
             <div class="details">
               <h3 class="inner-title">지정학 리스크 확대로 급등기이나, 일부 해소 가능성 존재</h3>
               <div class="table-top">MI Base와 ​시장 View Gap</div>
@@ -104,7 +146,7 @@
 
           <!-- Insight -->
           <div class="insight">
-            <h2 class="title">핵심 insight</h2>
+            <h2 class="title"><span class="red"></span>핵심 insight</h2>
             <ul class="details">
               <li>MI 수급모델 다수 시나리오 결과, 중장기적 $15.5 ~ $19.0 수렴 전망</li>
               <li>과거 지정학적 리스크 상황 고조시, 시장 가격은 일시적 최대 $20까지 상승 가능​</li>
@@ -236,92 +278,112 @@
   </div>
 
   <script>
-    // --- 1. 사이드바 활성화 로직 ---
+    // --- 사이드바 활성화 로직 ---
     const weeksList = document.getElementById('weeks-list');
     const weekItems = document.querySelectorAll('.week-item');
 
     if (weeksList) {
-      weeksList.addEventListener('click', (e) => {
+      weeksList.addEventListener('click', function (e) {
         const target = e.target.closest('.week-item');
         if (!target) return;
+
+        // 모든 아이템에서 active 클래스 제거
         weekItems.forEach(item => item.classList.remove('side-bar-active'));
+
+        // 클릭된 그 요소(target)에 클래스 추가
         target.classList.add('side-bar-active');
       });
     }
 
-    // --- 2. 챗봇 토글 로직 ---
+    // --- 차트 탭 활성화 로직 ---
+    const chartTabList = document.getElementById('chart-tab-list');
+    const chartPanels = document.querySelectorAll('.chart-panel');
+
+    if (chartTabList) {
+      chartTabList.addEventListener('click', function (e) {
+        const target = e.target.closest('.chart-tab-item');
+        if (!target) return;
+
+        const id = target.dataset.id;
+
+        // 탭 활성화 상태 변경
+        // this(chartTabList) 내부에서 기존 active를 찾아 제거
+        const currentTab = this.querySelector('.chart-tab-active');
+        if (currentTab) currentTab.classList.remove('chart-tab-active');
+        target.classList.add('chart-tab-active');
+
+        // 차트 영역 변경
+        chartPanels.forEach(panel => {
+          // 패널의 data-content와 탭의 id가 일치하면 active 추가
+          if (panel.dataset.content === id) {
+            panel.classList.add('active');
+          } else {
+            panel.classList.remove('active');
+          }
+        });
+      });
+    }
+
+    // 주요 가격 변도 요인 Event 요소 호버 시 
+    const eventDetails = document.querySelector('.event .details');
+
+    if (eventDetails) {
+      // 마우스가 들어왔을 때
+      eventDetails.addEventListener('mouseover', function (e) {
+
+        const item = e.target.closest('.item');
+        if (!item) return;
+
+        // 자식 div를 찾아서 클래스 추가
+        const childDiv = item.querySelector('.hoverItem');
+        // childDiv가 존재하고, 그 안의 텍스트 내용이 비어있지 않은지 확인 (공백 제거 후 체크)
+        if (childDiv && childDiv.textContent.trim().length > 0) {
+          childDiv.classList.add('active');
+        }
+      });
+
+      // 마우스가 나갔을 때
+      eventDetails.addEventListener('mouseout', function (e) {
+        const item = e.target.closest('.item');
+        if (!item) return;
+
+        // 자식 div를 찾아서 클래스 제거
+        const childDiv = item.querySelector('.hoverItem');
+        if (childDiv) {
+          childDiv.classList.remove('active');
+        }
+      });
+    }
+
+    // --- 챗봇 토글 로직 ---
     const botIcon = document.getElementById("bot-icon");
     const chatWindow = document.getElementById("chat-window");
 
     if (botIcon && chatWindow) {
-      botIcon.addEventListener("click", (e) => {
+      botIcon.addEventListener("click", function (e) {
         e.stopPropagation();
-        chatWindow.classList.toggle("show");
+
+        chatWindow.classList.toggle("show"); // -> 채팅창 표시 css 용
+
+        // 챗봇 색상 토글 용
         if (chatWindow.classList.contains("show")) {
-          const chatContent = chatWindow.querySelector('.chat-content');
-          chatContent.scrollTop = chatContent.scrollHeight;
+          this.children[0].classList.add("on");
+        } else {
+          this.children[0].classList.remove("on");
         }
       });
     }
 
-    // --- 3. 모달 제어 로직 (window -> document로 수정) ---
-    const eventContainer = document.querySelector('.event .details');
-    const detailModal = document.querySelector('.detail-modal');
-    const viewContainer = document.querySelector('.view .details');
-    const eventResultModal = document.querySelector('.event-result');
-
-    // Event 클릭 시 상세 모달 열기
-    if (eventContainer && detailModal) {
-      eventContainer.addEventListener('click', (e) => {
-        const targetItem = e.target.closest('.item');
-        if (targetItem) {
-          const allItems = Array.from(eventContainer.querySelectorAll('.item'));
-          const index = allItems.indexOf(targetItem);
-
-          // 모든 아이템 active 교체
-          allItems.forEach(item => item.classList.remove('active'));
-          targetItem.classList.add('active');
-
-          // 첫 번째 아이템(index 0)일 때만 모달 show
-          if (index === 0) {
-            detailModal.classList.add('show');
-            e.stopPropagation(); // 외부 클릭 닫기 방지
-          } else {
-            detailModal.classList.remove('show');
-          }
-        }
-      });
-    }
-
-    // View 클릭 시 결과 모달 열기
-    if (viewContainer && eventResultModal) {
-      viewContainer.addEventListener('click', (e) => {
-        eventResultModal.classList.add('show');
-        e.stopPropagation(); // 외부 클릭 닫기 방지
-      });
-    }
-
-    // --- 4. 외부 클릭 시 닫기 로직 등록 ---
+    // --- 외부 클릭 시 닫기 로직 ---
     window.addEventListener("click", (e) => {
-      // 챗봇 창 닫기
-      if (chatWindow && chatWindow.classList.contains("show") &&
-        !chatWindow.contains(e.target) && !botIcon.contains(e.target)) {
+      // 챗봇 창이 열려 있고, 클릭한 대상이 챗봇 창이나 아이콘이 아닐 경우 닫기
+      if (
+        chatWindow &&
+        chatWindow.classList.contains("show") &&
+        !chatWindow.contains(e.target) &&
+        !botIcon.contains(e.target)
+      ) {
         chatWindow.classList.remove("show");
-      }
-
-      // detail-modal 닫기
-      if (detailModal && detailModal.classList.contains('show') &&
-        !detailModal.contains(e.target) &&
-        (eventContainer && !eventContainer.contains(e.target))) {
-        detailModal.classList.remove('show');
-        if (eventContainer) eventContainer.querySelectorAll('.item').forEach(i => i.classList.remove('active'));
-      }
-
-      // eventResultModal 닫기
-      if (eventResultModal && eventResultModal.classList.contains('show') &&
-        !eventResultModal.contains(e.target) &&
-        (viewContainer && !viewContainer.contains(e.target))) {
-        eventResultModal.classList.remove('show');
       }
     });
   </script>

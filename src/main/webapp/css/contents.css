@@ -11,13 +11,56 @@
   padding: 20px;
 }
 .week1 .left .title {
-  font-size: 21px;
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 8px;
+       column-gap: 8px;
+  font-size: 26px;
   font-weight: bold;
-  color: #ea002c;
   margin-bottom: 15px;
 }
-.week1 .left .chart-area {
+.week1 .left .title .red {
+  width: 14px;
+  height: 20px;
+  background: #ea002c;
+  border-radius: 43%;
+}
+.week1 .left .chart-tab-list {
   display: flex;
+  -moz-column-gap: 3px;
+       column-gap: 3px;
+}
+.week1 .left .chart-tab-list .chart-tab-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 26px;
+  color: #aaaaaa;
+  background-color: #f2f4f6;
+  border: 1px solid #e4e5e5;
+  border-bottom: 0;
+  border-radius: 10px 10px 0 0;
+  width: 120px;
+  height: 45px;
+  cursor: pointer;
+}
+.week1 .left .chart-tab-list .chart-tab-item.chart-tab-active {
+  background-color: #ffffff;
+  color: #ea002c;
+  font-weight: 700;
+  position: relative;
+}
+.week1 .left .chart-tab-list .chart-tab-item.chart-tab-active::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: #ffffff;
+}
+.week1 .left .chart-panel {
+  display: none;
   justify-content: center;
   align-items: center;
   overflow: hidden;
@@ -27,8 +70,11 @@
   height: 640px;
   min-height: 640px;
   border: 1px solid #e4e5e5;
-  border-radius: 10px;
+  border-radius: 0 0 10px 10px;
   margin-bottom: 20px;
+}
+.week1 .left .chart-panel.active {
+  display: flex;
 }
 .week1 .left .explain {
   list-style: disc;
@@ -60,8 +106,18 @@
   flex-direction: column;
 }
 .week1 .right .event .title {
-  font-size: 21px;
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 8px;
+       column-gap: 8px;
+  font-size: 26px;
   font-weight: bold;
+}
+.week1 .right .event .title .red {
+  width: 14px;
+  height: 20px;
+  background: #ea002c;
+  border-radius: 43%;
 }
 .week1 .right .event .details {
   display: grid;
@@ -83,13 +139,44 @@
   border-radius: 10px;
   cursor: pointer;
 }
-.week1 .right .event .details .item.active {
+.week1 .right .event .details .item:hover {
   border-color: #ea002c;
-  color: #ea002c;
 }
-.week1 .right .event .details .item:hover::after, .week1 .right .event .details .item:hover::before {
-  opacity: 1;
-  visibility: visible;
+.week1 .right .event .details .item .hoverItem {
+  display: none;
+  position: absolute;
+}
+.week1 .right .event .details .item .hoverItem.active {
+  top: 80%;
+  z-index: 10;
+  background-color: #595959;
+  border-radius: 10px;
+  padding: 10px;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+}
+.week1 .right .event .details .item .hoverItem.active li {
+  display: flex;
+  flex-direction: column;
+  row-gap: 3px;
+}
+.week1 .right .event .details .item .hoverItem.active li .explain {
+  font-size: 14px;
+}
+.week1 .right .event .details .item .hoverItem.active::before {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  /* 삼각형 핵심 설정 */
+  width: 0;
+  height: 0;
+  border-bottom: 10px solid #595959; /* 밑변 (위로 향하는 삼각형) */
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
 }
 .week1 .right .view {
   display: flex;
@@ -97,8 +184,18 @@
   flex-direction: column;
 }
 .week1 .right .view .title {
-  font-size: 21px;
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 8px;
+       column-gap: 8px;
+  font-size: 26px;
   font-weight: bold;
+}
+.week1 .right .view .title .red {
+  width: 14px;
+  height: 20px;
+  background: #ea002c;
+  border-radius: 43%;
 }
 .week1 .right .view .details {
   display: flex;
@@ -166,8 +263,18 @@
   flex-direction: column;
 }
 .week1 .right .insight .title {
-  font-size: 21px;
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 8px;
+       column-gap: 8px;
+  font-size: 26px;
   font-weight: bold;
+}
+.week1 .right .insight .title .red {
+  width: 14px;
+  height: 20px;
+  background: #ea002c;
+  border-radius: 43%;
 }
 .week1 .right .insight .details {
   display: flex;

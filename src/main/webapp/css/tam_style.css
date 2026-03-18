@@ -105,11 +105,11 @@ select {
 /* start */
 /* 공통 */
 .sub_tit {
-  font-size: 20px;
-  font-weight: 600;
-  letter-spacing: -1px;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   gap: 8px;
   align-items: center;
 }
@@ -123,6 +123,31 @@ select {
 .sub_tit .gray {
   color: #aaaaaa;
   font-size: 16px;
+  font-weight: 400;
+}
+.sub_tit > div {
+  gap: 8px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.sub_tit .title_btn {
+  display: flex;
+}
+.sub_tit .title_btn button {
+  font-size: 16px;
+  border-radius: 50px;
+  padding: 2px 20px;
+  background: #fff;
+  border: 1px solid #000;
+  cursor: pointer;
+}
+.sub_tit .title_btn button.active {
+  background: #000;
+  color: #fff;
+}
+.sub_tit.flex_start {
+  justify-content: flex-start;
 }
 
 .dashed_line {
@@ -140,6 +165,8 @@ select {
   flex-direction: column;
   border: 1px solid #e4e5e5;
   gap: 5px;
+  font-size: 18px;
+  font-weight: 500;
 }
 .explain_part .red_tit {
   color: #ea002c;
@@ -190,7 +217,7 @@ select {
 
 .chart {
   width: 100%;
-  height: 200px;
+  height: 300px;
   border: 1px solid #ddd;
   overflow: auto;
 }
@@ -206,8 +233,10 @@ select {
   text-align: center;
   width: 100%;
   border-collapse: collapse;
+  font-size: 18px;
 }
 .table_area table th {
+  font-weight: 600;
   padding: 10px;
   background: #f2f4f6;
   color: #ea002c;
@@ -276,7 +305,10 @@ select {
   border-radius: 50%;
   z-index: 1000;
   cursor: pointer;
-  background: #ea002c url("../images/bot.png") center/50% no-repeat;
+  background: #56585e url("../images/bot.png") center/50% no-repeat;
+}
+.bot.on {
+  background-color: #ea002c;
 }
 
 /* 챗봇 창 기본 스타일 */
@@ -285,7 +317,7 @@ select {
   bottom: 110px; /* 아이콘 위로 배치 */
   right: 20px;
   width: 500px;
-  height: 500px;
+  height: 550px;
   background: white;
   border: 1px solid #ddd;
   border-radius: 15px;
@@ -342,7 +374,10 @@ select {
   background: #000 url("../images/human.png") center/50% no-repeat;
   border-radius: 20px 20px 20px 0px;
 }
-.chat-content .search {
+.chat-content .search_box {
+  position: relative;
+}
+.chat-content .search_box .search {
   width: 100%;
   height: 50px;
   border: 1px solid #aaa;
@@ -354,10 +389,21 @@ select {
   color: #818181;
 }
 .chat-content .send_icon {
+  position: absolute;
   width: 40px;
   height: 40px;
   background: #c4c4c4 url("../images/send.png") center/50% no-repeat;
   border-radius: 50px;
+  bottom: 5px;
+  right: 8px;
+  border: 0px;
+  cursor: pointer;
+}
+.chat-content .send_icon.active {
+  background: #969696 url("../images/send.png") center/50% no-repeat;
+}
+.chat-content .send_icon:hover {
+  background: #969696 url("../images/send.png") center/50% no-repeat;
 }
 
 /* 탭 메뉴 스타일 */
@@ -389,6 +435,7 @@ select {
   padding: 15px 20px;
   height: 100%;
   border-radius: 45px;
+  cursor: pointer;
 }
 .toggle_menu div.active {
   transition: 0.2s;
@@ -473,53 +520,34 @@ select {
   background: #fff;
   border-radius: 5px;
 }
-.tab-content.tab .tab_area.left .sub_tit {
-  justify-content: center;
-}
 .tab-content.tab .tab_area.mid {
-  width: 35%;
+  width: 40%;
   margin: 0 auto;
+}
+.tab-content.tab .tab_area.mid .chart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 .tab-content.tab .tab_area.mid .table_area table th {
   width: 20%;
 }
-.tab-content.tab .tab_area.right {
-  width: 40%;
-}
-.tab-content.tab .tab_area.right .sub_tit.bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.tab-content.tab .tab_area.right .sub_tit > div {
-  gap: 8px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-.tab-content.tab .tab_area.right .sub_tit .title_btn {
-  display: flex;
-}
-.tab-content.tab .tab_area.right .sub_tit .title_btn button {
-  border-radius: 50px;
-  padding: 3px 10px;
-  background: #fff;
-  border: 1px solid #000;
-}
-.tab-content.tab .tab_area.right .sub_tit .title_btn button.active {
-  background: #000;
-  color: #fff;
-}
-.tab-content.tab .tab_area.right .devide {
+.tab-content.tab .tab_area.mid .devide {
   display: flex;
   gap: 10px;
 }
-.tab-content.tab .tab_area.right .devide .part {
+.tab-content.tab .tab_area.mid .devide .part {
   width: 50%;
   gap: 10px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
-.tab-content.tab .tab_area.right .devide .part .table_area table tr td {
-  padding: 17px 0;
+.tab-content.tab .tab_area.mid .devide .part .table_area table tr td {
+  padding: 22px 0;
+  font-size: 25px;
+}
+.tab-content.tab .tab_area.right {
+  width: 35%;
 }/*# sourceMappingURL=tam_style.css.map */
