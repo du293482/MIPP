@@ -3,14 +3,16 @@
   flex-direction: column;
   width: 200px;
   background-color: #ebebeb;
+  border-right: 1px solid #e4e5e5;
 }
 .side-bar .title {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 21px;
+  font-size: 22px;
   font-weight: bolder;
   height: 60px;
+  background-color: #ffffff;
 }
 .side-bar .weeks-list {
   display: flex;
@@ -44,4 +46,6 @@
   bottom: 0;
   width: 10px;
   background-color: #ff2850;
-}/*# sourceMappingURL=sideBar.css.map */
+}
+
+/*# sourceMappingURL=sideBar.css.map */

@@ -1,313 +1,408 @@
 <!doctype html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TAM</title>
-  <link rel="stylesheet" href="./css/tam_style.css" />
-  <link rel="stylesheet" href="./css/tam_chart.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TAM</title>
+    <link rel="stylesheet" href="./css/tam_style.css" />
+    <link rel="stylesheet" href="./css/tam_chart.css" />
 
-  <script src="js/chart.js"></script>
-  <script src="js/chartjs-plugin-annotation3.0.1.min.js"></script>
+    <script src="js/chart.js"></script>
+    <script src="js/chartjs-plugin-annotation3.0.1.min.js"></script>
 </head>
 
 <body>
-  <div class="wrap">
-
+<div class="wrap">
     <!-- 챗봇 -->
     <div class="bot" id="bot-icon"></div>
     <div class="chat-window" id="chat-window">
-      <div class="chat-content">
-        <div class="left">
-          <div class="bot_left"></div>
-          <div class="contents">
-            현재 Spike에 대해 펀더멘털 요인을 확인해본 결과, 기상, 수요, 공급,
-            재고, 물류 등 주요 Regime 요소에는 구조적인 변화가 확인되지
-            않았습니다.<br />
-            <br />이번 가격 상승은 단기 한파 전망에 따른 수요 증가 기대가
-            반영된 결과로 판단됩니다. 또한 과거 유사 Spike 사례를 분석해보면
-            평균 회귀 발생 빈도는 약 80% 수준입니다. 즉, 현재 상황에서는
-            가격이 평균으로 되돌아갈 가능성이 비교적 높은 것으로
-            판단됩니다.<br /><br />
-            다만, 실제 한파가 지속될 지 여부는 확인이 필요합니다. 한파가
-            예상보다 장기화될 경우 새로운 가격 Regime으로 이어질 가능성이
-            있습니다.
-          </div>
+        <div class="chat-content first" id="content-first">
+            <div class="right">
+                <div class="contents">이 Spike가 회귀할 가능성은 어느 정도야?</div>
+                <div class="human_right"></div>
+            </div>
+            <div class="left">
+                <div class="bot_left"></div>
+                <div class="contents">
+                    현재 Spike에 대해 펀더멘털 요인을 확인해본 결과, 기상, 수요, 공급,
+                    재고, 물류 등 주요 Regime 요소에는 구조적인 변화가 확인되지
+                    않았습니다.<br />
+                    <br />이번 가격 상승은 단기 한파 전망에 따른 수요 증가 기대가
+                    반영된 결과로 판단됩니다.<br /><br />
+                    또한 과거 유사 Spike 사례를 분석해보면 평균 회귀 발생 빈도는 약
+                    80% 수준입니다.<br /><br />
+                    즉, 현재 상황에서는 가격이 평균으로 되돌아갈 가능성이 비교적 높은
+                    것으로 판단됩니다.<br /><br />
+                    다만, 실제 한파가 지속될 지 여부는 확인이 필요합니다. 한파가
+                    예상보다 장기화될 경우 새로운 가격 Regime으로 이어질 가능성이
+                    있습니다.
+                </div>
+            </div>
         </div>
-        <div class="right">
-          <div class="contents">이 Spike가 회귀할 가능성은 어느 정도야?</div>
-          <div class="human_right"></div>
+        <div class="chat-content second" id="content-second">
+            <div class="right">
+                <div class="contents">
+                    수익을 가장 극대화할 수 있는 진입 구간은 언제야?
+                </div>
+                <div class="human_right"></div>
+            </div>
+            <div class="left">
+                <div class="bot_left"></div>
+                <div class="contents">
+                    과거 유사 Spike 패턴을 분석해보면 약 15일 이후, 스프레드가 약
+                    2.0$/MMBtu에서 스프레드 차이 1.5$/MMBtu로 수익을 가장 극대화할 수
+                    있습니다.<br /><br />
+
+                    $10M 진입 시, 0.5$/MMBtu에 청산 기준 $0.75M의 기대수익이
+                    예상됩니다. (JKM Feb Long/May Short)
+                    <br />
+                    <br />
+                    <div class="table_area">
+                        <table>
+                            <thead>
+                            <th>진입</th>
+                            <th>청산</th>
+                            <th>차이</th>
+                            <th>수익</th>
+                            </thead>
+                            <tr>
+                                <td>현재 <br />(1.8$)</td>
+                                <td>N+90일 <br />(0.5$)</td>
+                                <td>1.3$/<br />MMBtu</td>
+                                <td>
+                                    0.72M<br />
+                                    USD
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>N+15일 <br />(2.0$)</td>
+                                <td>N+90일 <br />(0.5$)</td>
+                                <td>1.5$/<br />MMBtu</td>
+                                <td>
+                                    0.75M<br />
+                                    USD
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>N+30일 <br />(1.5$)</td>
+                                <td>N+90일 <br />(0.5$)</td>
+                                <td>1.5$/<br />MMBtu</td>
+                                <td>
+                                    0.67M<br />
+                                    USD
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="chat-content third" id="content-third">
+            <div class="right">
+                <div class="contents">
+                    이 TAM에 대해서 매일 아침 8시에 Daily로 업데이트해서 내 이메일로
+                    보내줘
+                </div>
+                <div class="human_right"></div>
+            </div>
+            <div class="left">
+                <div class="bot_left"></div>
+                <div class="contents">
+                    네, 매일 아침 8시에 Spike 탐지 결과 및 추천 포지션을 xxx님께
+                    이메일로 전달드리겠습니다.<br /><br />
+
+                    ##메일 예시##
+                    <br /><br />
+                    ㆍ제목: [Daily TAM] Spike 탐지 및 추천 포지션(3/17)<br />
+                    ㆍSpike 대상: JKM ’27 Feb–May <br />
+                    ㆍ회귀 확률: ~80% 추천 전략: Feb Long /<br />
+                    ㆍMay Short 진입 구간: N+15일 ($2.0/MMBtu) <br />
+                    ㆍ목표 청산: ~$0.5/MMBtu<br />
+                    ㆍ기대 수익: ~$0.75M (10M 기준)<br />
+                </div>
+            </div>
         </div>
         <div class="search_box">
-          <input type="text" placeholder="이 Spike가 회귀할 가능성은 어느 정도야?" class="search" />
-          <button class="send_icon"></button>
+            <select id="query-selector" class="search chat-select">
+                <option value="" disabled>문의 유형 선택</option>
+                <option selected value="first">Spike 회귀 가능성 확인</option>
+                <option value="second">수익 극대화 진입 구간</option>
+                <option value="third">데일리 리포트 설정</option>
+            </select>
+            <!-- <input
+              type="text"
+              placeholder="이 Spike가 회귀할 가능성은 어느 정도야?"
+              class="search"
+            /> -->
+            <!-- <button class="send_icon"></button> -->
         </div>
-      </div>
     </div>
     <!-- 챗봇 끝 -->
 
     <!-- 본문 -->
+    <div class="title">TAM Demo</div>
     <div id="tab2" class="tab-content tab tab2" role="tabpanel">
-      <!-- 왼쪽 -->
-      <div class="tab_area left">
-        <div class="sub_tit">
-          <div><span class="red"></span>Trading 기회</div>
-          <span class="gray">기준일자 : 2026-03-16</span>
-        </div>
-        <div class="toggle_menu">
-          <div class="active">AI제안 리스트</div>
-          <div>관심리스트</div>
-        </div>
-        <div class="button_area">
-          <button class="active">
-            1. JKM 27년 2월물-5월물
-            <p class="num">$1.2</p>
-          </button>
-          <button>
-            2. JKM-TTF 27년 3월물
-            <p class="num">$1.2</p>
-          </button>
-          <button>
-            3. MB-FEI 27년 10월물
-            <p class="num">$1.0</p>
-          </button>
-          <button>
-            4. JKM-27년 10월물-12월물
-            <p class="num">$1.2</p>
-          </button>
-          <button>
-            5. TTF-HH 27년 4월물
-            <p class="num">$0.2</p>
-          </button>
-        </div>
-      </div>
-      <!-- 왼쪽끝 -->
-      <!-- 중간 시작 -->
-      <div class="tab_area mid">
-        <div class="sub_tit flex_start">
-          <span class="red"></span>Spike 판별 그래프
-          <span class="gray">(JKM '27년 2월물 - 5월물)</span>
-        </div>
-        <div class="chart chart-container">
-          <div class="custom-legend">
-            <div class="legend-item">
-              <div class="legend-color-line"></div>
-              <span>Spike 추세 예측값</span>
+        <!-- 왼쪽 -->
+        <div class="tab_area left">
+            <div class="sub_tit">
+                <div><span class="red"></span>Trading 기회</div>
+                <span class="gray">기준일자 : 2026-01-21</span>
             </div>
-            <div class="legend-item">
-              <div class="legend-color-box"></div>
-              <span>Spike 가능 범위</span>
+            <div class="toggle_menu">
+                <div class="active">AI제안 리스트</div>
+                <div>관심리스트</div>
             </div>
-          </div>
-          <div class="canvas-wrapper">
-            <canvas id="spikeChart" width="680" height="228"></canvas>
-            <script src="js/tam-spike.js"></script>
-          </div>
+            <div class="button_area">
+                <button class="active">
+                    1. JKM 27년 2월물-5월물
+                    <p class="num">$1.5</p>
+                </button>
+                <button>
+                    2. JKM-TTF 27년 3월물
+                    <p class="num">$1.2</p>
+                </button>
+                <button>
+                    3. MB-FEI 27년 10월물
+                    <p class="num">$1.2</p>
+                </button>
+                <button>
+                    4. JKM-27년 10월물-12월물
+                    <p class="num">$1.0</p>
+                </button>
+                <button>
+                    5. TTF-HH 27년 4월물
+                    <p class="num">$0.5</p>
+                </button>
+                <button>
+                    6. TTF-HH 27년 4월물
+                    <p class="num">$0.6</p>
+                </button>
+            </div>
         </div>
-        <div class="dashed_line"></div>
+        <!-- 왼쪽끝 -->
+        <!-- 중간 시작 -->
+        <div class="tab_area mid">
+            <div class="sub_tit flex_start">
+                <span class="red"></span>Spike 판별 그래프
+                <span class="gray">(JKM '27년 2월물 - 5월물)</span>
+            </div>
+            <div class="chart chart-container Spike-chart">
+                <div class="custom-legend">
+                    <div class="legend-item">
+                        <div class="legend-color-line"></div>
+                        <span>Spike 추세 예측값</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color-box"></div>
+                        <span>Spike 가능 범위</span>
+                    </div>
+                </div>
+                <div class="canvas-wrapper">
+                    <canvas id="spikeChart"></canvas>
+                    <script src="js/tam-spike.js"></script>
+                </div>
+            </div>
+            <div class="dashed_line"></div>
 
-        <div class="sub_tit flex_start">
-          <span class="red"></span>Regime 붕괴 여부
-          <span class="gray">(펀더멘탈 이탈 여부 및 원인 분석)</span>
-        </div>
-        <div class="devide">
-          <div class="part">
-            <div class="table_area mid">
-              <table>
-                <thead>
-                  <th>Regime 요소</th>
-                  <th>붕괴 여부</th>
-                </thead>
-                <tr class="tr_act red active">
-                  <td>기상</td>
-                  <td>X</td>
-                </tr>
-                <tr class="tr_act red">
-                  <td>수요</td>
-                  <td>X</td>
-                </tr>
-                <tr class="tr_act red">
-                  <td>공급</td>
-                  <td>X</td>
-                </tr>
-                <tr class="tr_act red">
-                  <td>재고</td>
-                  <td>X</td>
-                </tr>
-                <tr class="tr_act red">
-                  <td>물류</td>
-                  <td>X</td>
-                </tr>
-              </table>
+            <div class="sub_tit flex_start">
+                <span class="red"></span>Regime 붕괴 여부
+                <span class="gray">(펀더멘탈 이탈 여부 및 원인 분석)</span>
             </div>
-          </div>
-          <div class="part">
-            <div class="chart">
-              <canvas id="regimeChart" width="349" height="298"></canvas>
-              <script src="js/tam-regime.js"></script>
+            <div class="devide">
+                <div class="part">
+                    <div class="table_area mid">
+                        <table>
+                            <thead>
+                            <th>Regime 요소</th>
+                            <th>붕괴 여부</th>
+                            </thead>
+                            <tr class="tr_act red active">
+                                <td>기상</td>
+                                <td>X</td>
+                            </tr>
+                            <tr class="tr_act red">
+                                <td>수요</td>
+                                <td>X</td>
+                            </tr>
+                            <tr class="tr_act red">
+                                <td>공급</td>
+                                <td>X</td>
+                            </tr>
+                            <tr class="tr_act red">
+                                <td>재고</td>
+                                <td>X</td>
+                            </tr>
+                            <tr class="tr_act red">
+                                <td>물류</td>
+                                <td>X</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="part">
+                    <div class="chart Regime-chart">
+                        <canvas id="regimeChart" height="200"></canvas>
+                        <script src="js/tam-regime.js"></script>
+                    </div>
+                    <div class="explain_part">
+                        <p>ㆍ통계적으로 안정적 패턴</p>
+                        <p>
+                            ㆍ2월 한파 전망 부재하며, HDD전망 역시 변동 없어 LNG 수요
+                            안정적, 근월물 리스크 프리미엄 제한적
+                        </p>
+                    </div>
+                </div>
             </div>
-            <div class="explain_part">
-              <p>ㆍ통계적으로 안정적 패턴</p>
-              <p>
-                ㆍ2월 한파 전망 부재하며, HDD전망 역시 변동 없어 LNG 수요
-                안정적, 근월물 리스크 프리미엄 제한적
-              </p>
+        </div>
+        <div class="tab_area right">
+            <div class="sub_tit">
+                <div><span class="red"></span>Action별 수익&리스크</div>
+                <div class="title_btn">
+                    <button class="active">진입규모</button>
+                    <button>$10M</button>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
-      <div class="tab_area right">
-        <div class="sub_tit">
-          <div><span class="red"></span>Action별 수익&리스크</div>
-          <div class="title_btn">
-            <button class="active">진입규모</button>
-            <button>$10M</button>
-          </div>
-        </div>
 
-        <div class="table_area">
-          <table>
-            <thead>
-              <th>진입 시점</th>
-              <th>청산 시점</th>
-              <th>예상 수익</th>
-              <th>Loss Limit</th>
-              <th>마진콜 Risk</th>
-            </thead>
-            <tr class="tr_act">
-              <td>현재 진입 <br />($1.8)</td>
-              <td>N+63일 <br />($1.8)</td>
-              <td>2.4M USD</td>
-              <td>-1.6M USD</td>
-              <td>가능</td>
-            </tr>
+            <div class="table_area">
+                <table>
+                    <thead>
+                    <th>진입 시점</th>
+                    <th>청산 시점</th>
+                    <th>예상 수익</th>
+                    <th>Loss Limit</th>
+                    <th>마진콜 Risk</th>
+                    </thead>
+                    <tr class="tr_act">
+                        <td>현재 진입 <br />($1.8)</td>
+                        <td>N+90일 <br />($0.5)</td>
+                        <td>$1.3/MMBtu</td>
+                        <td>$-1.6M USD</td>
+                        <td>Pass</td>
+                    </tr>
 
-            <tr class="tr_act active">
-              <td>현재 진입 <br />($1.8)</td>
-              <td>N+63일 <br />($1.8)</td>
-              <td>2.4M USD</td>
-              <td>-1.6M USD</td>
-              <td>가능</td>
-            </tr>
-            <tr class="tr_act">
-              <td>
-                현재 진입
-                <br />($1.8)
-              </td>
-              <td>N+63일 <br />($1.8)</td>
-              <td>2.4M USD</td>
-              <td>-1.4M USD</td>
-              <td>가능</td>
-            </tr>
-          </table>
+                    <tr class="tr_act active">
+                        <td>N+15일 <br />($2.0)</td>
+                        <td>N+90일 <br />($0.5)</td>
+                        <td>$1.5/MMBtu</td>
+                        <td>$-1.6M USD</td>
+                        <td>Pass</td>
+                    </tr>
+                    <tr class="tr_act">
+                        <td>N+30일 <br />($1.5)</td>
+                        <td>N+90일 <br />($0.5)</td>
+                        <td>$1.0/MMBtu</td>
+                        <td>$-1.6M USD</td>
+                        <td>Pass</td>
+                    </tr>
+                </table>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
-  <script>
-
+</div>
+<script>
     // 토글활성화
     const toggleMenu = document.querySelector(".toggle_menu");
 
     if (toggleMenu) {
-      toggleMenu.addEventListener("click", function (e) {
-        // 클릭된 요소가 div인지 확인 (가장 가까운 div 찾기)
-        const target = e.target.closest("div");
-        if (!target || target.parentElement !== this) return;
+        toggleMenu.addEventListener("click", function (e) {
+            // 클릭된 요소가 div인지 확인 (가장 가까운 div 찾기)
+            const target = e.target.closest("div");
+            if (!target || target.parentElement !== this) return;
 
-        const tabId = target.getAttribute("data-tab");
+            const tabId = target.getAttribute("data-tab");
 
-        // 모든 탭과 컨텐츠에서 active 제거 (한 번의 순회로 처리 가능)
-        // 팁: querySelectorAll 대신 부모의 children을 활용하면 더 빠릅니다.
-        Array.from(this.children).forEach((tab) => {
-          tab.classList.remove("active");
-          tab.setAttribute("aria-selected", "false");
+            // 모든 탭과 컨텐츠에서 active 제거 (한 번의 순회로 처리 가능)
+            // 팁: querySelectorAll 대신 부모의 children을 활용하면 더 빠릅니다.
+            Array.from(this.children).forEach((tab) => {
+                tab.classList.remove("active");
+                tab.setAttribute("aria-selected", "false");
 
-          // 연결된 컨텐츠가 있다면 함께 제거 (id가 존재할 때만)
-          const content = document.getElementById(tab.getAttribute("data-tab"));
-          if (content) content.classList.remove("active");
+                // 연결된 컨텐츠가 있다면 함께 제거 (id가 존재할 때만)
+                const content = document.getElementById(
+                    tab.getAttribute("data-tab"),
+                );
+                if (content) content.classList.remove("active");
+            });
+
+            // 3. 선택된 요소 활성화
+            target.classList.add("active");
+            target.setAttribute("aria-selected", "true");
+
+            const targetContent = document.getElementById(tabId);
+            if (targetContent) targetContent.classList.add("active");
         });
-
-        // 3. 선택된 요소 활성화
-        target.classList.add("active");
-        target.setAttribute("aria-selected", "true");
-
-        const targetContent = document.getElementById(tabId);
-        if (targetContent) targetContent.classList.add("active");
-      });
     }
 
     // 버튼 활성화
     const buttonArea = document.querySelector(".button_area");
 
     if (buttonArea) {
-      buttonArea.addEventListener("click", function (e) {
-        // 클릭된 요소가 button인지 확인 (가장 가까운 button 찾기)
-        const target = e.target.closest("button");
+        buttonArea.addEventListener("click", function (e) {
+            // 클릭된 요소가 button인지 확인 (가장 가까운 button 찾기)
+            const target = e.target.closest("button");
 
-        // button이 아니거나, 해당 buttonArea의 직계 자식이 아닐 경우 리턴
-        if (!target || !this.contains(target)) return;
+            // button이 아니거나, 해당 buttonArea의 직계 자식이 아닐 경우 리턴
+            if (!target || !this.contains(target)) return;
 
-        const tabId = target.getAttribute("data-tab");
+            const tabId = target.getAttribute("data-tab");
 
-        // 모든 버튼 상태 초기화 (this 내부의 버튼들만 타겟팅)
-        const allButtons = this.querySelectorAll("button");
-        allButtons.forEach((btn) => {
-          btn.classList.remove("active");
-          btn.setAttribute("aria-selected", "false");
+            // 모든 버튼 상태 초기화 (this 내부의 버튼들만 타겟팅)
+            const allButtons = this.querySelectorAll("button");
+            allButtons.forEach((btn) => {
+                btn.classList.remove("active");
+                btn.setAttribute("aria-selected", "false");
 
-          // 연관된 컨텐츠가 있다면 함께 초기화 (ID가 있는 경우만)
-          const contentId = btn.getAttribute("data-tab");
-          if (contentId) {
-            document.getElementById(contentId)?.classList.remove("active");
-          }
+                // 연관된 컨텐츠가 있다면 함께 초기화 (ID가 있는 경우만)
+                const contentId = btn.getAttribute("data-tab");
+                if (contentId) {
+                    document.getElementById(contentId)?.classList.remove("active");
+                }
+            });
+
+            // 클릭된 버튼 및 해당 컨텐츠 활성화
+            target.classList.add("active");
+            target.setAttribute("aria-selected", "true");
+
+            if (tabId) {
+                document.getElementById(tabId)?.classList.add("active");
+            }
         });
-
-        // 클릭된 버튼 및 해당 컨텐츠 활성화
-        target.classList.add("active");
-        target.setAttribute("aria-selected", "true");
-
-        if (tabId) {
-          document.getElementById(tabId)?.classList.add("active");
-        }
-      });
     }
 
     // 그래프 활성화
     const tableArea = document.querySelector(".table_area.mid");
 
     if (tableArea) {
-      tableArea.addEventListener("click", function (e) {
-        // 클릭된 요소가 .tr_act 행인지 확인
-        const targetRow = e.target.closest(".tr_act");
+        tableArea.addEventListener("click", function (e) {
+            // 클릭된 요소가 .tr_act 행인지 확인
+            const targetRow = e.target.closest(".tr_act");
 
-        // 행이 아니거나 해당 tableArea 내부에 있지 않으면 리턴
-        if (!targetRow || !this.contains(targetRow)) return;
+            // 행이 아니거나 해당 tableArea 내부에 있지 않으면 리턴
+            if (!targetRow || !this.contains(targetRow)) return;
 
-        const tabId = targetRow.getAttribute("data-tab");
+            const tabId = targetRow.getAttribute("data-tab");
 
-        // 모든 활성 상태 초기화 (this 내부의 .tr_act만 타겟팅)
-        const allRows = this.querySelectorAll(".tr_act");
-        allRows.forEach((row) => {
-          row.classList.remove("active");
-          row.setAttribute("aria-selected", "false");
+            // 모든 활성 상태 초기화 (this 내부의 .tr_act만 타겟팅)
+            const allRows = this.querySelectorAll(".tr_act");
+            allRows.forEach((row) => {
+                row.classList.remove("active");
+                row.setAttribute("aria-selected", "false");
 
-          // 연관된 컨텐츠(그래프 등)가 있다면 함께 초기화
-          const contentId = row.getAttribute("data-tab");
-          if (contentId) {
-            document.getElementById(contentId)?.classList.remove("active");
-          }
+                // 연관된 컨텐츠(그래프 등)가 있다면 함께 초기화
+                const contentId = row.getAttribute("data-tab");
+                if (contentId) {
+                    document.getElementById(contentId)?.classList.remove("active");
+                }
+            });
+
+            // 3. 클릭된 행 및 해당 컨텐츠 활성화
+            targetRow.classList.add("active");
+            targetRow.setAttribute("aria-selected", "true");
+
+            if (tabId) {
+                document.getElementById(tabId)?.classList.add("active");
+            }
         });
-
-        // 3. 클릭된 행 및 해당 컨텐츠 활성화
-        targetRow.classList.add("active");
-        targetRow.setAttribute("aria-selected", "true");
-
-        if (tabId) {
-          document.getElementById(tabId)?.classList.add("active");
-        }
-      });
     }
 
     // --- 챗봇 토글 로직 ---
@@ -315,33 +410,64 @@
     const chatWindow = document.getElementById("chat-window");
 
     if (botIcon && chatWindow) {
-      botIcon.addEventListener("click", function (e) {
-        e.stopPropagation();
+        botIcon.addEventListener("click", function (e) {
+            e.stopPropagation();
 
-        chatWindow.classList.toggle("show"); // -> 채팅창 표시 css 용
+            chatWindow.classList.toggle("show"); // -> 채팅창 표시 css 용
 
-        // 챗봇 색상 토글 용
-        if (chatWindow.classList.contains("show")) {
-          this.classList.add("on");
-        } else {
-          this.classList.remove("on");
-        }
-      });
+            // 챗봇 색상 토글 용
+            if (chatWindow.classList.contains("show")) {
+                this.classList.add("on");
+            } else {
+                this.classList.remove("on");
+            }
+        });
     }
 
     // --- 외부 클릭 시 닫기 로직 ---
     window.addEventListener("click", (e) => {
-      // 챗봇 창이 열려 있고, 클릭한 대상이 챗봇 창이나 아이콘이 아닐 경우 닫기
-      if (
-        chatWindow &&
-        chatWindow.classList.contains("show") &&
-        !chatWindow.contains(e.target) &&
-        !botIcon.contains(e.target)
-      ) {
-        chatWindow.classList.remove("show");
-      }
+        // 챗봇 창이 열려 있고, 클릭한 대상이 챗봇 창이나 아이콘이 아닐 경우 닫기
+        if (
+            chatWindow &&
+            chatWindow.classList.contains("show") &&
+            !chatWindow.contains(e.target) &&
+            !botIcon.contains(e.target)
+        ) {
+            chatWindow.classList.remove("show");
+            botIcon.classList.remove("on");
+        }
     });
-  </script>
-</body>
 
+    /* 셀렉트박스 스크립트 */
+    document.addEventListener("DOMContentLoaded", () => {
+        const selectElement = document.getElementById("query-selector");
+        const allContents = document.querySelectorAll(".chat-content");
+
+        function updateContent(selectedValue) {
+            // 1. 모든 요소에서 active 클래스 제거 (화면 비우기)
+            allContents.forEach((el) => {
+                el.classList.remove("active");
+            });
+
+            // 2. 선택된 ID에 해당하는 요소에만 active 클래스 추가
+            const targetId = `content-${selectedValue}`;
+            const targetElement = document.getElementById(targetId);
+
+            if (targetElement) {
+                targetElement.classList.add("active");
+            }
+        }
+
+        // [실행] 초기 로드 시 첫 번째 항목 활성화
+        if (selectElement) {
+            updateContent(selectElement.value);
+        }
+
+        // [이벤트] 변경 시 활성화
+        selectElement.addEventListener("change", (e) => {
+            updateContent(e.target.value);
+        });
+    });
+</script>
+</body>
 </html>

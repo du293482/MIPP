@@ -2,69 +2,69 @@
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 @font-face {
-  font-family: "SUIT";
-  src: url("./font/SUIT-Thin.otf") format("opentype");
-  font-weight: 100;
+    font-family: "SUIT";
+    src: url("../font/SUIT-Thin.otf") format("opentype");
+    font-weight: 100;
 }
 
 /* ExtraLight (200) */
 @font-face {
-  font-family: "SUIT";
-  src: url("./font/SUIT-ExtraLight.otf") format("opentype");
-  font-weight: 200;
+    font-family: "SUIT";
+    src: url("../font/SUIT-ExtraLight.otf") format("opentype");
+    font-weight: 200;
 }
 
 /* Light (300) */
 @font-face {
-  font-family: "SUIT";
-  src: url("./font/SUIT-Light.otf") format("opentype");
-  font-weight: 300;
+    font-family: "SUIT";
+    src: url("../font/SUIT-Light.otf") format("opentype");
+    font-weight: 300;
 }
 
 /* Regular (400) */
 @font-face {
-  font-family: "SUIT";
-  src: url("./font/SUIT-Regular.otf") format("opentype");
-  font-weight: 400;
+    font-family: "SUIT";
+    src: url("../font/SUIT-Regular.otf") format("opentype");
+    font-weight: 400;
 }
 
 /* Medium (500) */
 @font-face {
-  font-family: "SUIT";
-  src: url("./font/SUIT-Medium.otf") format("opentype");
-  font-weight: 500;
+    font-family: "SUIT";
+    src: url("../font/SUIT-Medium.otf") format("opentype");
+    font-weight: 500;
 }
 
 /* SemiBold (600) */
 @font-face {
-  font-family: "SUIT";
-  src: url("./font/SUIT-SemiBold.otf") format("opentype");
-  font-weight: 600;
+    font-family: "SUIT";
+    src: url("../font/SUIT-SemiBold.otf") format("opentype");
+    font-weight: 600;
 }
 
 /* Bold (700) */
 @font-face {
-  font-family: "SUIT";
-  src: url("./font/SUIT-Bold.otf") format("opentype");
-  font-weight: 700;
+    font-family: "SUIT";
+    src: url("../font/SUIT-Bold.otf") format("opentype");
+    font-weight: 700;
 }
 
 /* ExtraBold (800) */
 @font-face {
-  font-family: "SUIT";
-  src: url("./font/SUIT-ExtraBold.otf") format("opentype");
-  font-weight: 800;
+    font-family: "SUIT";
+    src: url("../font/SUIT-ExtraBold.otf") format("opentype");
+    font-weight: 800;
 }
 
 /* Heavy (900) */
 @font-face {
-  font-family: "SUIT";
-  src: url("./font/SUIT-Heavy.otf") format("opentype");
-  font-weight: 900;
+    font-family: "SUIT";
+    src: url("../font/SUIT-Heavy.otf") format("opentype");
+    font-weight: 900;
 }
 
 /* 2. 기본 여백 제거 */
@@ -78,29 +78,28 @@ figure,
 blockquote,
 dl,
 dd {
-  margin: 0;
+    margin: 0;
 }
 
 /* 3. 리스트 스타일 제거 */
 ul,
 ol {
-  list-style: none;
-  padding: 0;
+    list-style: none;
+    padding: 0;
 }
 
 /* 4. 이미지 및 미디어 요소 설정 */
 img,
 picture {
-  max-width: 100%;
-  display: block;
+    max-width: 100%;
+    display: block;
 }
 
 /* 5. 폰트 및 텍스트 렌더링 개선 */
 body {
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-  font-family:
-    "SUIT",
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    font-family: "SUIT",
     -apple-system,
     "Segoe UI",
     Roboto,
@@ -114,303 +113,412 @@ input,
 button,
 textarea,
 select {
-  font: inherit;
+    font: inherit;
 }
 
 /* start */
 
 /* 공통 */
+.title {
+    // margin: 30px auto 20px;
+    text-align: center;
+    font-size: 32px;
+    font-weight: 700;
+    background-color: #fff;
+    height: 80px;
+    line-height: 80px;
+}
+
 .sub_tit {
-  font-size: 22px;
-  //   margin-bottom: 15px;
-  font-weight: 700;
-  letter-spacing: -0.5px;
-  display: flex;
-  justify-content: space-between;
-  gap: 8px;
-  align-items: center;
-  .red {
-    display: block;
-    width: 14px;
-    height: 20px;
-    background: #ea002c;
-    border-radius: 43%;
-  }
-  .gray {
-    color: #aaaaaa;
-    font-size: 16px;
-    font-weight: 400;
-  }
-
-  > div {
+    font-size: 22px;
+    //   margin-bottom: 15px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    display: flex;
+    justify-content: space-between;
     gap: 8px;
-    display: flex;
-    justify-content: flex-start;
     align-items: center;
-  }
-  .title_btn {
-    display: flex;
-    button {
-      font-size: 16px;
-      border-radius: 50px;
-      padding: 2px 20px;
-      background: #fff;
-      border: 1px solid #000;
-      cursor: pointer;
-      &.active {
-        background: #000;
-        color: #fff;
-      }
+
+    .red {
+        display: block;
+        width: 14px;
+        height: 20px;
+        background: #ea002c;
+        border-radius: 43%;
     }
-  }
-  &.flex_start {
-    justify-content: flex-start;
-  }
+
+    .gray {
+        color: #aaaaaa;
+        font-size: 16px;
+        font-weight: 400;
+    }
+
+    > div {
+        gap: 8px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .title_btn {
+        display: flex;
+
+        button {
+            font-size: 18px;
+            border-radius: 50px;
+            padding: 2px 15px;
+            background: #fff;
+            border: 1px solid #000;
+            cursor: pointer;
+
+            &.active {
+                background: #000;
+                color: #fff;
+            }
+        }
+    }
+
+    &.flex_start {
+        justify-content: flex-start;
+    }
 }
+
 .dashed_line {
-  width: 100%;
-  border: 1px dashed #e4e5e5;
+    width: 100%;
+    border: 1px dashed #e4e5e5;
 }
+
 .explain_part {
-  background-color: #f2f4f6;
-  border-radius: 5px;
-  padding: 15px;
-  overflow: auto;
-  height: 150px;
-  display: flex;
-  flex-direction: column;
-  border: 1px solid #e4e5e5;
-  gap: 5px;
-  font-size: 18px;
-  font-weight: 500;
-  .red_tit {
-    color: #ea002c;
-    font-size: 21px;
+    background-color: #f2f4f6;
+    border-radius: 5px;
+    padding: 12px;
+    overflow: auto;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #e4e5e5;
+    gap: 5px;
+    font-size: 16px;
     font-weight: 500;
-    border-bottom: 2px solid #ea002c;
-    padding: 0 0 5px;
-    margin: 0 0 5px;
-  }
 
-  /* 1. 스크롤바 전체 너비 설정 (얇게) */
-  &::-webkit-scrollbar {
-    width: 6px; /* 세로 스크롤바 너비 */
-    height: 6px; /* 가로 스크롤바 높이 */
-  }
+    .red_tit {
+        color: #ea002c;
+        font-size: 21px;
+        font-weight: 500;
+        border-bottom: 2px solid #ea002c;
+        padding: 0 0 5px;
+        margin: 0 0 5px;
+    }
 
-  /* 2. 스크롤바 화살표 버튼 제거 */
-  &::-webkit-scrollbar-button {
-    display: none;
-  }
+    /* 1. 스크롤바 전체 너비 설정 (얇게) */
+    &::-webkit-scrollbar {
+        width: 6px; /* 세로 스크롤바 너비 */
+        height: 6px; /* 가로 스크롤바 높이 */
+    }
 
-  /* 3. 스크롤바 트랙(바탕) 설정 */
-  &::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 5px;
-  }
+    /* 2. 스크롤바 화살표 버튼 제거 */
+    &::-webkit-scrollbar-button {
+        display: none;
+    }
 
-  /* 4. 스크롤바 핸들(움직이는 부분) 설정 */
-  &::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 5px;
-  }
+    /* 3. 스크롤바 트랙(바탕) 설정 */
+    &::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 5px;
+    }
 
-  /* 5. 마우스 올렸을 때 핸들 색상 변경 */
-  &::-webkit-scrollbar-thumb:hover {
-    background: #555;
-  }
+    /* 4. 스크롤바 핸들(움직이는 부분) 설정 */
+    &::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 5px;
+    }
 
-  p {
-    word-break: keep-all;
-    padding-left: 5px; /* 글자 1.5개 분량 내어쓰기 */
-    text-indent: -15px;
-  }
+    /* 5. 마우스 올렸을 때 핸들 색상 변경 */
+    &::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+
+    p {
+        word-break: keep-all;
+        padding-left: 5px; /* 글자 1.5개 분량 내어쓰기 */
+        text-indent: -15px;
+    }
 }
 
 .chart {
-  width: 100%;
-  height: 300px;
-  border: 1px solid #ddd;
-  overflow: auto;
+    width: 100%;
+    // height: 300px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: auto;
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
 }
 
 .table_area {
-  width: 100%;
-  border: 1px solid #e4e5e5;
-  border-radius: 5px;
-  overflow: hidden;
-  font-weight: 500;
-  table {
-    text-align: center;
     width: 100%;
-    border-collapse: collapse;
-    font-size: 18px;
+    border: 1px solid #e4e5e5;
+    border-radius: 5px;
+    overflow: hidden;
+    font-weight: 500;
 
-    th {
-      font-weight: 600;
-      padding: 10px;
-      background: #f2f4f6;
-      color: #ea002c;
-      border-right: 1px solid #e4e5e5;
-      border-bottom: 1px solid #e4e5e5;
-      &:last-child {
-        border-right: 0px;
-        td {
-        }
-      }
-    }
-    tr {
-      // border: 1px solid #e4e5e5;
-      td {
-        padding: 10px 0;
-        border-left: 1px solid #e4e5e5;
-        border-bottom: 1px solid #e4e5e5;
-        gap: 3px;
-        &.td_first {
-          display: flex;
-          align-items: center;
-          justify-content: flex-start;
-          gap: 20px;
-          padding: 10px 10px;
-        }
-        .line {
-          width: 30px;
-          height: 3px;
-          background-color: #212121;
-          display: block;
-          &.green {
-            background: #80db86;
-          }
-        }
-        &:first-child {
-          border-left: 0px;
-        }
-      }
-      &:last-child {
-        td {
-          border-bottom: 0px;
-        }
-      }
-      &.tr_act {
-        cursor: pointer;
-      }
-      &.active {
-        font-weight: 600;
-        color: #000;
+    table {
+        text-align: center;
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 18px;
+        letter-spacing: -1px;
 
-        &.red {
-          background: #ea002c;
-          color: #fff;
+        th {
+            font-weight: 600;
+            padding: 10px;
+            background: #f2f4f6;
+            color: #ea002c;
+            border-right: 1px solid #e4e5e5;
+            border-bottom: 1px solid #e4e5e5;
+
+            &:last-child {
+                border-right: 0px;
+
+                td {
+                }
+            }
         }
-      }
+
+        tr {
+            // border: 1px solid #e4e5e5;
+            td {
+                padding: 10px 0;
+                border-left: 1px solid #e4e5e5;
+                border-bottom: 1px solid #e4e5e5;
+                gap: 3px;
+
+                &.td_first {
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                    gap: 20px;
+                    padding: 10px 10px;
+                }
+
+                .line {
+                    width: 30px;
+                    height: 3px;
+                    background-color: #212121;
+                    display: block;
+
+                    &.green {
+                        background: #80db86;
+                    }
+                }
+
+                &:first-child {
+                    border-left: 0px;
+                }
+            }
+
+            &:last-child {
+                td {
+                    border-bottom: 0px;
+                }
+            }
+
+            &.tr_act {
+                cursor: pointer;
+            }
+
+            &.active {
+                font-weight: 600;
+                color: #000;
+
+                &.red {
+                    background: #ea002c;
+                    color: #fff;
+                }
+            }
+        }
     }
-  }
 }
+
 .wrap {
-  width: 100%;
-  margin: 0 auto;
-  // padding: 20px;
-  // height: 100%;
-  font-size: 16px;
-  overflow: auto;
-  background: #f2f4f6;
-  position: relative;
+    width: 1600px;
+    max-width: 1600px;
+    margin: 0 auto;
+    // padding: 20px;
+    // height: 100%;
+    font-size: 16px;
+    overflow: auto;
+    // background: #f2f4f6;
+    position: relative;
 }
+
 /* 챗봇 아이콘 위치 */
 .bot {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  z-index: 1000;
-  cursor: pointer;
-  background: #56585e url("../images/bot.png") center / 50% no-repeat;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    z-index: 1000;
+    cursor: pointer;
+    background: #56585e url("../images/bot.png") center / 50% no-repeat;
 
-  &.on {
-    background-color: #ea002c;
-  }
+    &.on {
+        background-color: #ea002c;
+    }
 }
 
 /* 챗봇 창 기본 스타일 */
+.chat-select {
+    /* 1. 브라우저 기본 화살표 제거 */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    /* 2. 아이콘 설정 (SVG 예시) */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center; /* 아이콘 위치: 오른쪽에서 12px */
+    background-size: 14px;
+
+    /* 3. 텍스트가 아이콘과 겹치지 않게 여백 추가 */
+    padding-right: 35px;
+
+    /* 4. 기존 스타일 유지 */
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 20px; /* 챗봇 스타일: 둥글게 */
+    background-color: #fff;
+    cursor: pointer;
+    outline: none;
+}
+
+/* 마우스 호버 시 효과 */
+.chat-select:hover {
+    border-color: #bbb;
+}
+
 .chat-window {
-  position: fixed;
-  bottom: 110px; /* 아이콘 위로 배치 */
-  right: 20px;
-  width: 500px;
-  height: 550px;
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  display: none; /* 기본적으로 숨김 */
-  flex-direction: column;
-  z-index: 1000;
-  overflow: auto;
+    position: fixed;
+    bottom: 110px; /* 아이콘 위로 배치 */
+    right: 20px;
+    width: 500px;
+    min-height: 400px;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    max-height: 700px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    display: none; /* 기본적으로 숨김 */
+    flex-direction: column;
+    z-index: 1000;
+    overflow: auto;
 }
 
 /* 활성화되었을 때 보여주기 */
 .chat-window.show {
-  display: flex;
-}
-.chat-content {
-  padding: 20px;
-  flex: 1;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-
-  .left {
     display: flex;
-    gap: 15px;
+    padding: 20px;
+    justify-content: flex-end;
+}
 
-    .bot_left {
-      width: 40px;
-      height: 40px;
-      border-radius: 20px 20px 0px 20px;
-      background: #ea002c url("../images/bot.png") center / 50% no-repeat;
+.chat-content {
+    display: none;
+
+    &.active {
+        padding: 20px 0px 20px;
+        flex: 1;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        gap: 20px;
+        overflow: auto;
     }
-    .contents {
-      width: 75%;
-      border: 1px solid #000;
-      border-radius: 5px;
-      padding: 10px;
+
+    .left {
+        display: flex;
+        gap: 15px;
+
+        .bot_left {
+            width: 40px;
+            height: 40px;
+            border-radius: 20px 20px 0px 20px;
+            background: #ea002c url("../images/bot.png") center / 50% no-repeat;
+            margin: -20px 0 0;
+        }
+
+        .contents {
+            width: 75%;
+            border: 1px solid #000;
+            border-radius: 5px;
+            padding: 10px;
+
+            .table_area {
+                table {
+                    font-size: 15px;
+
+                    th {
+                    }
+
+                    tr {
+                        td {
+                        }
+                    }
+                }
+            }
+        }
     }
-  }
-  .right {
+}
+
+.right {
     display: flex;
     gap: 15px;
     justify-content: flex-end;
+
     .contents {
-      background: #e4e9ef;
-      width: 75%;
-      border-radius: 5px;
-      padding: 10px;
-      border: 1px solid #e4e5e5;
+        background: #e4e9ef;
+        width: -webkit-fit-content;
+        width: -moz-fit-content;
+        width: fit-content;
+        max-width: 80%;
+        border-radius: 5px;
+        padding: 10px;
+        border: 1px solid #e4e5e5;
     }
+
     .human_right {
-      width: 40px;
-      height: 40px;
-      background: #000 url("../images/human.png") center / 50% no-repeat;
-      border-radius: 20px 20px 20px 0px;
+        width: 40px;
+        height: 40px;
+        background: #000 url("../images/human.png") center / 50% no-repeat;
+        border-radius: 20px 20px 20px 0px;
+        margin: -20px 0 0;
     }
-  }
-  .search_box {
+}
+
+.search_box {
     position: relative;
+
     .search {
-      width: 100%;
-      height: 50px;
-      border: 1px solid #aaa;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      padding: 10px 10px;
-      justify-content: space-between;
-      color: #818181;
+        width: 100%;
+        height: 50px;
+        border: 1px solid #aaa;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        padding: 10px 10px;
+        justify-content: space-between;
+        color: #818181;
     }
-  }
-  .send_icon {
+}
+
+.send_icon {
     position: absolute;
     width: 40px;
     height: 40px;
@@ -420,63 +528,69 @@ select {
     right: 8px;
     border: 0px;
     cursor: pointer;
+
     &.active {
-      background: #969696 url("../images/send.png") center / 50% no-repeat;
+        background: #969696 url("../images/send.png") center / 50% no-repeat;
     }
+
     &:hover {
-      background: #969696 url("../images/send.png") center / 50% no-repeat;
+        background: #969696 url("../images/send.png") center / 50% no-repeat;
     }
-  }
 }
+
 // chat-bot 끝
 /* 탭 메뉴 스타일 */
 .tab-list {
-  display: flex;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  border-bottom: 1px solid #ea002c;
-  width: 100%;
-  //   background: #f2f4f6;
-  justify-content: space-between;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    border-bottom: 1px solid #ea002c;
+    width: 100%;
+    //   background: #f2f4f6;
+    justify-content: space-between;
 }
+
 .toggle_menu {
-  display: flex;
-  border: 1px solid #ddd;
-  padding: 5px;
-  justify-content: space-around;
-  border-radius: 45px;
-  width: 100%;
-  gap: 5px;
-  font-size: 20px;
-  margin: 20px 10px 0;
-  font-weight: 700;
-  color: #bfbfbf;
-  div {
-    width: 49%;
-    padding: 15px 20px;
-    height: 100%;
-    border-radius: 45px;
-    cursor: pointer;
-    &.active {
-      transition: 0.2s;
-      color: #fff;
-      background: #ea002c;
+    display: flex;
+    border: 1px solid #ddd;
+    padding: 3px;
+    justify-content: space-around;
+    border-radius: 42px;
+    width: 100%;
+    gap: 5px;
+    font-size: 20px;
+    margin: 20px 0 0;
+    font-weight: 700;
+    color: #bfbfbf;
+
+    div {
+        width: 49%;
+        padding: 12px 20px;
+        height: 100%;
+        border-radius: 45px;
+        cursor: pointer;
+
+        &.active {
+            transition: 0.2s;
+            color: #fff;
+            background: #ea002c;
+        }
     }
-  }
 }
+
 .tab-item {
-  padding: 10px 20px;
-  cursor: pointer;
-  margin-bottom: -1px; /* 하단 보더 겹치기 */
-  width: 49.8%;
-  text-align: center;
-  border: 1px solid #ddd;
-  border-radius: 5px 5px 0 0;
-  font-size: 16px;
-  background: #f2f4f6;
-  font-size: 22px;
-  border-bottom: 1px solid #ea002c;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-bottom: -1px; /* 하단 보더 겹치기 */
+    width: 49.8%;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 5px 5px 0 0;
+    font-size: 16px;
+    background: #f2f4f6;
+    font-size: 22px;
+    border-bottom: 1px solid #ea002c;
 }
 
 /* 활성화된 탭 스타일 */
@@ -490,110 +604,136 @@ select {
 /* 콘텐츠 표시 제어 */
 
 .tab-content {
-  padding: 20px;
-  //   border: 1px solid #ddd;
-  border-top: none;
-  // background: #f2f4f6;
-  // border: 1px solid #ea002c;
-  border-top: 0;
-  border-radius: 0 0 10px 10px;
+    padding: 20px;
+    //   border: 1px solid #ddd;
+    border-top: none;
+    // background: #f2f4f6;
+    // border: 1px solid #ea002c;
+    border-top: 0;
+    border-radius: 0 0 10px 10px;
+    background: #f2f4f6;
 
-  &.tab {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: nowrap;
-    gap: 40px;
-    height: 100vh;
-    .tab_area {
-      padding: 20px;
-      background-color: #fff;
-      gap: 20px;
-      display: flex;
-      flex-direction: column;
-      border-radius: 5px;
-      &.left {
-        font-size: 16px;
-        width: 25%;
-        text-align: center;
-        gap: 0;
-        .button_area {
-          margin-top: 20px;
-          display: flex;
-          gap: 15x;
-          flex-direction: column;
-          button {
-            padding: 10px 15px;
-            margin-bottom: 10px;
-            font-size: 22px;
-            border: none;
-            border-radius: 5px;
-            font-weight: 600;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: #aaaaaa;
-            cursor: pointer;
-            &.active {
-              background: #000;
-              color: #fff;
-            }
+    &.tab {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+        gap: 25px;
+        height: 91vh;
+        border: 1px solid #ddd;
 
-            &:last-child {
-              margin-bottom: 0;
-            }
-
-            .num {
-              font-weight: 700;
-              padding: 5px 10px;
-              color: #ea002c;
-              background: #fff;
-              border-radius: 5px;
-            }
-          }
-        }
-      }
-      &.mid {
-        width: 40%;
-        margin: 0 auto;
-        .chart {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          overflow: hidden;
-        }
-        .table_area {
-          table {
-            th {
-              width: 20%;
-            }
-          }
-        }
-        .devide {
-          display: flex;
-          gap: 10px;
-          .part {
-            width: 50%;
-            gap: 10px;
+        .tab_area {
+            padding: 20px;
+            background-color: #fff;
+            gap: 15px;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            .table_area {
-              table {
-                tr {
-                  td {
-                    padding: 22px 0;
-                    font-size: 25px;
-                  }
+            justify-content: flex-start;
+            border-radius: 5px;
+
+            &.left {
+                font-size: 16px;
+                width: 25%;
+                text-align: center;
+                gap: 0;
+
+                .button_area {
+                    margin-top: 20px;
+                    display: flex;
+                    gap: 15x;
+                    flex-direction: column;
+
+                    button {
+                        padding: 10px 15px;
+                        margin-bottom: 10px;
+                        font-size: 20px;
+                        border: none;
+                        border-radius: 5px;
+                        font-weight: 600;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        color: #aaaaaa;
+                        cursor: pointer;
+
+                        &.active {
+                            background: #000;
+                            color: #fff;
+                        }
+
+                        &:last-child {
+                            margin-bottom: 0;
+                        }
+
+                        .num {
+                            font-weight: 700;
+                            padding: 5px 10px;
+                            color: #ea002c;
+                            background: #fff;
+                            border-radius: 5px;
+                        }
+                    }
                 }
-              }
             }
-          }
+
+            &.mid {
+                width: 37.5%;
+                margin: 0 auto;
+
+                .Spike-chart {
+                    flex: 1;
+                }
+
+                .chart {
+                    justify-content: center;
+                    align-items: center;
+                    overflow: hidden;
+                }
+
+                .table_area {
+                    table {
+                        th {
+                            width: 20%;
+                        }
+                    }
+                }
+
+                .devide {
+                    display: grid;
+                    flex: 1;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 10px;
+
+                    .part {
+                        gap: 10px;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+
+                        .chart {
+                            // height: 210px;
+                            &.Regime-chart {
+                                flex: 1;
+                            }
+                        }
+
+                        .table_area {
+                            table {
+                                tr {
+                                    td {
+                                        padding: 13px 0;
+                                        font-size: 21px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.right {
+                width: 35%;
+            }
         }
-      }
-      &.right {
-        width: 35%;
-      }
     }
-  }
 }

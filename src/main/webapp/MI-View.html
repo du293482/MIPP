@@ -3,305 +3,329 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <title>주차별 MI-View</title>
+    <meta charset="UTF-8">
+    <title>주차별 MI-View</title>
 
-  <!-- css 초기화용 -->
-  <link rel="stylesheet" type="text/css" href="./css/initial.css">
-  <link rel="stylesheet" type="text/css" href="./css/basic.css">
-  <link rel="stylesheet" type="text/css" href="./css/sideBar.css">
-  <link rel="stylesheet" type="text/css" href="./css/contents.css">
-  <link rel="stylesheet" type="text/css" href="./css/mi_chart.css">
+    <!-- css 초기화용 -->
+    <link rel="stylesheet" type="text/css" href="./css/initial.css">
+    <link rel="stylesheet" type="text/css" href="./css/basic.css">
+    <link rel="stylesheet" type="text/css" href="./css/sideBar.css">
+    <link rel="stylesheet" type="text/css" href="./css/contents.css">
+    <link rel="stylesheet" type="text/css" href="./css/mi_chart.css">
 
-  <script src="js/chart.js"></script>
-  <script src="js/chartjs-plugin-annotation1.4.js"></script>
+    <script src="js/chart.js"></script>
+    <script src="js/chartjs-plugin-annotation1.4.js"></script>
 
 </head>
 
 <body id="root">
-  <main class="main">
+<div class="page-title">
+    MI Demo
+</div>
+<main class="main">
     <!-- 사이드바 -->
     <div class="side-bar" id="side-bar">
-      <h1 class="title">주차별 MI View</h1>
-      <ul class="weeks-list" id="weeks-list">
-        <li class="week-item side-bar-active" data-id="1">2026년 3월 3주차</li>
-        <li class="week-item" data-id="2">2026년 3월 2주차</li>
-        <li class="week-item" data-id="3">2026년 3월 1주차</li>
-        <li class="week-item" data-id="4">2026년 2월 4주차</li>
-        <li class="week-item" data-id="5">2026년 2월 3주차</li>
-      </ul>
+        <h1 class="title">주차별 MI View</h1>
+        <ul class="weeks-list" id="weeks-list">
+            <li class="week-item side-bar-active" data-id="1">2026년 3월 3주차</li>
+            <li class="week-item" data-id="2">2026년 3월 2주차</li>
+            <li class="week-item" data-id="3">2026년 3월 1주차</li>
+            <li class="week-item" data-id="4">2026년 2월 4주차</li>
+            <li class="week-item" data-id="5">2026년 2월 3주차</li>
+        </ul>
     </div>
     <!-- 오른쪽 내용 -->
     <section class="weeks-contents" id="weeks-contents">
-      <div class="week1">
-        <!-- 왼쪽 차트 관련 영역 -->
-        <div class="left">
-          <!-- 제목 -->
-          <h2 class="title"><span class="red"></span>26년 JKM 월물 가격전망</h2>
-          <!-- 차트 탭 -->
-          <div class="chart-tab-list" id="chart-tab-list">
-            <div class="chart-tab-item chart-tab-active" data-id="1">JKM</div>
-            <div class="chart-tab-item" data-id="2">HH</div>
-            <div class="chart-tab-item" data-id="3">TTF</div>
-          </div>
-          <!-- 차트 -->
-          <div class="chart-container" id="chart-container">
-            <div class="chart-panel jkm active" id="jkm-chart" data-content="1">
-              <canvas id="mi-view-canvas" width="580" height="640"></canvas>
-<!--              <canvas id="mi-view-canvas"></canvas>-->
-              <div id="custom-legend"></div>
-              <script src="js/mi-view.js"></script>
-            </div>
-            <div class="chart-panel hh" data-content="2">HH 차트 내용</div>
-            <div class="chart-panel ttf" data-content="3">TTF 차트 내용</div>
-          </div>
-          <!-- 설명 -->
-          <ul class="explain">
-            <li>CME 가격이 3월 1주차 $14.0 -> 2주차 $18.5 -> 3주차 $17.3으로 급등 후 감소</li>
-            <li>MI Base 전망은 $17.0으로 월물 평균 -$0.3 격차 보이고 있음</li>
-          </ul>
-        </div>
-
-        <!--  오른쪽 영역 -->
-        <div class="right">
-
-          <!-- Event -->
-          <div class="event">
-            <h2 class="title"><span class="red"></span>주요 가격 변동 요인 Event</h2>
-            <ul class="details">
-              <li class="item">카타르 LNG ​생산 중단
-                <div class="hoverItem"></div>
-              </li>
-              <li class="item">호르무즈 해협 LNG 운송 차질
-                <div class="hoverItem"></div>
-              </li>
-              <li class="item">
-                유럽향 LNG cargo 아시아로 전환
-                <div class="hoverItem">
-
+        <div class="week1">
+            <!-- 왼쪽 차트 관련 영역 -->
+            <div class="left">
+                <!-- 제목 -->
+                <h2 class="title"><span class="red"></span>26년 JKM 월물 가격전망</h2>
+                <!-- 차트 탭 -->
+                <div class="chart-tab-list" id="chart-tab-list">
+                    <div class="chart-tab-item chart-tab-active" data-id="1">JKM</div>
+                    <div class="chart-tab-item" data-id="2">HH</div>
+                    <div class="chart-tab-item" data-id="3">TTF</div>
                 </div>
-              </li>
-              <li class="item">중국 LNG 수요 둔화
-                <ul class="hoverItem">
-                  <li>
-                    <p class="sub-title">25년 2분기</p>
-                    <div class="explain">
-                      중국 LNG 수입 약 20%이상 감소 <br /> 
-                      JKM $14 -> $12로 하락 이후 $13로 반등
+                <!-- 차트 -->
+                <div class="chart-container" id="chart-container">
+                    <div class="chart-panel jkm active" id="jkm-chart" data-content="1">
+                        <canvas id="mi-view-canvas" width="580" height="640"></canvas>
+                        <!--              <canvas id="mi-view-canvas"></canvas>-->
+                        <div id="custom-legend"></div>
+                        <script src="js/mi-view.js"></script>
                     </div>
-                  </li>
-                  <li>
-                    <p class="sub-title">22년 2분기</p>
-                    <div class="explain">
-                      중국 도시봉쇄로 산업활동 둔화 및 LNG 수입 감소 <br /> 
-                      JKM $26 -> $22로 하락 이후 $29 수준으로 회복
-                    </div>
-                  </li>
-                  <li>
-                    <p class="sub-title">20년 1분기</p>
-                    <div class="explain">
-                      코로나 확산으로 중국 및 아시아 LNG 수요 금감 <br /> 
-                      JKM $4 -> $2.9로 하락 이후 $3.4 수준으로 소폭 회복
-                    </div>
-                  </li>
+                    <div class="chart-panel hh" data-content="2">HH 차트 내용</div>
+                    <div class="chart-panel ttf" data-content="3">TTF 차트 내용</div>
+                </div>
+                <!-- 설명 -->
+                <ul class="explain">
+                    <li>CME 가격이 3월 1주차 $14.0 -> 2주차 $18.5 -> 3주차 $17.3으로 급등 후 감소</li>
+                    <li>MI Base 전망은 $17.0으로 월물 평균 -$0.3 격차 보이고 있음</li>
                 </ul>
-              </li>
-              <li class="item">LNG 파생상품 거래량 증가
-                <div class="hoverItem"></div>
-              </li>
-              <li class="item">유럽 재고 하락 및 Refill 부담 확대
-                <div class="hoverItem"></div>
-              </li>
-            </ul>
-          </div>
-
-          <!-- View -->
-          <div class="view">
-            <h2 class="title"><span class="red"></span>MI Base 가격 전망 View</h2>
-            <div class="details">
-              <h3 class="inner-title">지정학 리스크 확대로 급등기이나, 일부 해소 가능성 존재</h3>
-              <div class="table-top">MI Base와 ​시장 View Gap</div>
-              <div class="table-area">
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Event</th>
-                      <th>시장해석</th>
-                      <th>MI Base 가정</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>중국 수요 둔화</td>
-                      <td>수요 둔화 선반영</td>
-                      <td>사례 기반 보수적 판단​</td>
-                    </tr>
-                    <tr>
-                      <td>호르무즈 해협</td>
-                      <td>갈등 장기화에 따른 공급 차질 우려</td>
-                      <td>중장기 갈등 해소 시나리오 반영</td>
-                    </tr>
-                    <tr>
-                      <td>LNG 파생상품 거래량 증가</td>
-                      <td>가격 상승 기대 반영, 투기적 매수 확대</td>
-                      <td>금융시장 포지션 영향, 수급 반영 제한적</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-
             </div>
-          </div>
 
-          <!-- Insight -->
-          <div class="insight">
-            <h2 class="title"><span class="red"></span>핵심 insight</h2>
-            <ul class="details">
-              <li>MI 수급모델 다수 시나리오 결과, 중장기적 $15.5 ~ $19.0 수렴 전망</li>
-              <li>과거 지정학적 리스크 상황 고조시, 시장 가격은 일시적 최대 $20까지 상승 가능​</li>
-            </ul>
-          </div>
+            <!--  오른쪽 영역 -->
+            <div class="right">
 
-          <!-- 해석 상세 -->
-          <div class="detail-modal">
-            <h2 class="title">
-              카타르 LNG 생산 중단
-            </h2>
-            <div class="data1">
-              <h3>
-                Event 개요
-              </h3>
-              <ul>
-                <li>세계 최대 LNG 수출 허브인 카타르 Ras Laffan LNG 생산 시설 일부 가동 중단 발생.</li>
-              </ul>
-            </div>
-            <div class="data1">
-              <h3>
-                Event 해석
-              </h3>
-              <ul>
-                <li>Ras Laffan LNG 생산 차질 발생 시 글로벌 LNG 공급 감소 가능성 존재</li>
-                <li>카타르 LNG는 아시아 및 유럽 주요 LNG 수입국의 핵심 공급원으로 단기 공급 차질 발생 시 글로벌 LNG 수급 타이트닝 가능</li>
-              </ul>
-            </div>
-            <div class="data1">
-              <h3>
-                가격/스프레드 영향​
-              </h3>
-              <ul>
-                <li>카타르 LNG 공급 차질 발생 시 글로벌 LNG 공급 감소 우려 확대 → JKM 단기 상방 압력 확대 가능​</li>
-                <li>중동발 LNG 공급 리스크가 아시아 시장에 더 크게 반영될 경우 JKM-TTF 스프레드 확대 가능</li>
-              </ul>
-            </div>
-          </div>
+                <!-- Event -->
+                <div class="event">
+                    <h2 class="title"><span class="red"></span>주요 가격 변동 요인 Event</h2>
+                    <ul class="details">
+                        <li class="item">카타르 LNG ​생산 중단
+                            <ul class="hoverItem">
+                                <li>
+                                    <p class="sub-title">Event 개요</p>
+                                    <div class="explain">
+                                        세계 최대 LNG 수출 허브인 카타르 Ras Laffan LNG 생산 시설 일부 가동 중단 발생.
+                                    </div>
+                                </li>
+                                <li>
+                                    <p class="sub-title">Event 해석</p>
+                                    <div class="explain">
+                                        Ras Laffan LNG 생산 차질 발생 시 글로벌 LNG 공급 감소 가능성 존재 <br/>
+                                        카타르 LNG는 아시아 및 유럽 주요 LNG 수입국의 핵심 공급원으로 단기 공급 차질 발생 시 글로벌 LNG 수급 타이트닝 가능​
+                                    </div>
+                                </li>
+                                <li>
+                                    <p class="sub-title">가격/스프레드 영향</p>
+                                    <div class="explain">
+                                        카타르 LNG 공급 차질 발생 시 글로벌 LNG 공급 감소 우려 확대 → JKM 단기 상방 압력 확대 가능​ <br/>
+                                        중동발 LNG 공급 리스크가 아시아 시장에 더 크게 반영될 경우 JKM-TTF 스프레드 확대 가능​
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="item">호르무즈 해협 LNG 운송 차질
+                            <div class="hoverItem"></div>
+                        </li>
+                        <li class="item">
+                            유럽향 LNG cargo 아시아로 전환
+                            <div class="hoverItem">
 
-          <!-- Event 분석 결과 검색 -->
-          <div class="event-result">
-            <h2 class="title">
-              중국 수요 둔화
-            </h2>
-            <div class="details">
-              <h3 class="sub-title">
-                해당 Event의 Historical 유사 Event는 다음과 같습니다.
-              </h3>
-              <table>
-                <thead>
-                  <tr>
-                    <th>시점</th>
-                    <th>당시 시황</th>
-                    <th>가격 변화</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>25년 4분기</td>
-                    <td>중국 LNG 구매 감소 및 장기 계약 물량 확대​</td>
-                    <td>JKM $17 -> $14로 하락, 이후 $15 수준으로 회복​</td>
-                  </tr>
-                  <tr>
-                    <td>24년 3분기</td>
-                    <td>중국 전력 수요 둔화 및 LNG 재고 증가​​</td>
-                    <td>JKM $14 -> $11로 하락 후 $12 수준으로 회복​​</td>
-                  </tr>
-                  <tr>
-                    <td>25년 4분기</td>
-                    <td>중국 산업 생산 둔화로 LNG spot 구매 감소​​</td>
-                    <td>JKM $16 -> $13으로 하락, 이후 $14 수준으로 반등​​</td>
-                  </tr>
-                </tbody>
-              </table>
+                            </div>
+                        </li>
+                        <li class="item">중국 LNG 수요 둔화
+                            <ul class="hoverItem">
+                                <li>
+                                    <p class="sub-title">25년 2분기</p>
+                                    <div class="explain">
+                                        중국 LNG 수입 약 20%이상 감소 <br/>
+                                        JKM $14 -> $12로 하락 이후 $13로 반등
+                                    </div>
+                                </li>
+                                <li>
+                                    <p class="sub-title">22년 2분기</p>
+                                    <div class="explain">
+                                        중국 도시봉쇄로 산업활동 둔화 및 LNG 수입 감소 <br/>
+                                        JKM $26 -> $22로 하락 이후 $29 수준으로 회복
+                                    </div>
+                                </li>
+                                <li>
+                                    <p class="sub-title">20년 1분기</p>
+                                    <div class="explain">
+                                        코로나 확산으로 중국 및 아시아 LNG 수요 금감 <br/>
+                                        JKM $4 -> $2.9로 하락 이후 $3.4 수준으로 소폭 회복
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="item">LNG 파생상품 거래량 증가
+                            <div class="hoverItem"></div>
+                        </li>
+                        <li class="item">유럽 재고 하락 및 Refill 부담 확대
+                            <div class="hoverItem"></div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- View -->
+                <div class="view">
+                    <h2 class="title"><span class="red"></span>MI Base 가격 전망 View</h2>
+                    <div class="details">
+                        <h3 class="inner-title"><span class="icon"></span>지정학 리스크 확대로 급등기이나, 일부 해소 가능성 존재</h3>
+                        <div class="table-top">MI Base와 ​시장 View Gap</div>
+                        <div class="table-area">
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th>Event</th>
+                                    <th>시장해석</th>
+                                    <th>MI Base 가정</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>중국 수요 둔화</td>
+                                    <td>수요 둔화 선반영</td>
+                                    <td>사례 기반 보수적 판단​</td>
+                                </tr>
+                                <tr>
+                                    <td>호르무즈 해협</td>
+                                    <td>갈등 장기화에 따른 공급 차질 우려</td>
+                                    <td>중장기 갈등 해소 시나리오 반영</td>
+                                </tr>
+                                <tr>
+                                    <td>LNG 파생상품 거래량 증가</td>
+                                    <td>가격 상승 기대 반영, 투기적 매수 확대</td>
+                                    <td>금융시장 포지션 영향, 수급 반영 제한적</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Insight -->
+                <div class="insight">
+                    <h2 class="title"><span class="red"></span>핵심 insight</h2>
+                    <ul class="details">
+                        <li>MI 수급모델 다수 시나리오 결과, 중장기적 $15.5 ~ $19.0 수렴 전망</li>
+                        <li>과거 지정학적 리스크 상황 고조시, 시장 가격은 일시적 최대 $20까지 상승 가능​</li>
+                    </ul>
+                </div>
+
+                <!-- 해석 상세 -->
+                <div class="detail-modal">
+                    <h2 class="title">
+                        카타르 LNG 생산 중단
+                    </h2>
+                    <div class="data1">
+                        <h3>
+                            Event 개요
+                        </h3>
+                        <ul>
+                            <li>세계 최대 LNG 수출 허브인 카타르 Ras Laffan LNG 생산 시설 일부 가동 중단 발생.</li>
+                        </ul>
+                    </div>
+                    <div class="data1">
+                        <h3>
+                            Event 해석
+                        </h3>
+                        <ul>
+                            <li>Ras Laffan LNG 생산 차질 발생 시 글로벌 LNG 공급 감소 가능성 존재</li>
+                            <li>카타르 LNG는 아시아 및 유럽 주요 LNG 수입국의 핵심 공급원으로 단기 공급 차질 발생 시 글로벌 LNG 수급 타이트닝 가능</li>
+                        </ul>
+                    </div>
+                    <div class="data1">
+                        <h3>
+                            가격/스프레드 영향​
+                        </h3>
+                        <ul>
+                            <li>카타르 LNG 공급 차질 발생 시 글로벌 LNG 공급 감소 우려 확대 → JKM 단기 상방 압력 확대 가능​</li>
+                            <li>중동발 LNG 공급 리스크가 아시아 시장에 더 크게 반영될 경우 JKM-TTF 스프레드 확대 가능</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Event 분석 결과 검색 -->
+                <div class="event-result">
+                    <h2 class="title">
+                        중국 수요 둔화
+                    </h2>
+                    <div class="details">
+                        <h3 class="sub-title">
+                            해당 Event의 Historical 유사 Event는 다음과 같습니다.
+                        </h3>
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>시점</th>
+                                <th>당시 시황</th>
+                                <th>가격 변화</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>25년 4분기</td>
+                                <td>중국 LNG 구매 감소 및 장기 계약 물량 확대​</td>
+                                <td>JKM $17 -> $14로 하락, 이후 $15 수준으로 회복​</td>
+                            </tr>
+                            <tr>
+                                <td>24년 3분기</td>
+                                <td>중국 전력 수요 둔화 및 LNG 재고 증가​​</td>
+                                <td>JKM $14 -> $11로 하락 후 $12 수준으로 회복​​</td>
+                            </tr>
+                            <tr>
+                                <td>25년 4분기</td>
+                                <td>중국 산업 생산 둔화로 LNG spot 구매 감소​​</td>
+                                <td>JKM $16 -> $13으로 하락, 이후 $14 수준으로 반등​​</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </section>
-  </main>
+</main>
 
-  <div class="bot-area" id="bot-icon">
+<div class="bot-area" id="bot-icon">
     <div class="bot-img">
 
     </div>
-  </div>
+</div>
 
-  <div class="chat-window" id="chat-window">
+<div class="chat-window" id="chat-window">
     <div class="chat-content">
-      <div class="chat-group">
-        <div class="right">
-          <div class="contents">호르무즈 해협 Event를 반영한 MI 수급모델 시나리오에는 어떤 것들이 있어?</div>
-          <div class="human_right"></div>
+        <div class="chat-group">
+            <div class="right">
+                <div class="contents">호르무즈 해협 Event를 반영한 MI 수급모델 시나리오에는 어떤 것들이 있어?</div>
+                <div class="human_right"></div>
+            </div>
+            <div class="left">
+                <div class="bot_left"></div>
+                <div class="contents">
+                    Event 반영 정도에 따라 5개의 주요 시나리오가 생성되었습니다. <br/>
+                    1. 단기 정상화 시나리오​<br/>
+                    2. 부분 정상화 시나리오​<br/>
+                    3. 상반기 리스크 해소 시나리오​<br/>
+                    4. 갈등 장기화 시나리오​<br/>
+                    5. 공급 차질 심화 시나리오<br/>
+                    어떤 시나리오를 확인하시겠습니까?
+                </div>
+            </div>
+            <div class="right">
+                <div class="contents">Event 반영 정도가 가장 큰 시나리오 보여줘</div>
+                <div class="human_right"></div>
+            </div>
+            <div class="left">
+                <div class="bot_left"></div>
+                <div class="contents">
+                    ## 호르무즈 해협 공급 차질 심화 시나리오 ##<br/>
+                    호르무즈 통항 불허 및 중동 LNG 수출 차질 지속<br/>
+                    글로벌 LNG 공급 3~5% 감소 가정​<br/>
+                    → JKM ~$35 상승 가능​<br/>
+                    → JKM-TTF 스프레드 확대<br/>
+                    해당 시나리오를 반영한 MI Model을 생성하시겠습니까?​
+                </div>
+            </div>
+            <div class="search">
+                채팅창
+                <div class="send_icon"></div>
+            </div>
         </div>
-        <div class="left">
-          <div class="bot_left"></div>
-          <div class="contents">
-            Event 반영 정도에 따라 5개의 주요 시나리오가 생성되었습니다. <br />
-            1. 단기 정상화 시나리오​<br />
-            2. 부분 정상화 시나리오​<br />
-            3. 상반기 리스크 해소 시나리오​<br />
-            4. 갈등 장기화 시나리오​<br />
-            5. 공급 차질 심화 시나리오<br />
-            어떤 시나리오를 확인하시겠습니까?
-          </div>
-        </div>
-        <div class="right">
-          <div class="contents">Event 반영 정도가 가장 큰 시나리오 보여줘</div>
-          <div class="human_right"></div>
-        </div>
-        <div class="left">
-          <div class="bot_left"></div>
-          <div class="contents">
-            ## 호르무즈 해협 공급 차질 심화 시나리오 ##<br />
-            호르무즈 통항 불허 및 중동 LNG 수출 차질 지속<br />
-            글로벌 LNG 공급 3~5% 감소 가정​<br />
-            → JKM ~$35 상승 가능​<br />
-            → JKM-TTF 스프레드 확대<br />
-            해당 시나리오를 반영한 MI Model을 생성하시겠습니까?​
-          </div>
-        </div>
-        <div class="search">
-          채팅창
-          <div class="send_icon"></div>
-        </div>
-      </div>
 
     </div>
-  </div>
+</div>
 
-  <script>
+<script>
     // --- 사이드바 활성화 로직 ---
     const weeksList = document.getElementById('weeks-list');
     const weekItems = document.querySelectorAll('.week-item');
 
     if (weeksList) {
-      weeksList.addEventListener('click', function (e) {
-        const target = e.target.closest('.week-item');
-        if (!target) return;
+        weeksList.addEventListener('click', function (e) {
+            const target = e.target.closest('.week-item');
+            if (!target) return;
 
-        // 모든 아이템에서 active 클래스 제거
-        weekItems.forEach(item => item.classList.remove('side-bar-active'));
+            // 모든 아이템에서 active 클래스 제거
+            weekItems.forEach(item => item.classList.remove('side-bar-active'));
 
-        // 클릭된 그 요소(target)에 클래스 추가
-        target.classList.add('side-bar-active');
-      });
+            // 클릭된 그 요소(target)에 클래스 추가
+            target.classList.add('side-bar-active');
+        });
     }
 
     // --- 차트 탭 활성화 로직 ---
@@ -309,93 +333,95 @@
     const chartPanels = document.querySelectorAll('.chart-panel');
 
     if (chartTabList) {
-      chartTabList.addEventListener('click', function (e) {
-        const target = e.target.closest('.chart-tab-item');
-        if (!target) return;
+        chartTabList.addEventListener('click', function (e) {
+            const target = e.target.closest('.chart-tab-item');
+            if (!target) return;
 
-        const id = target.dataset.id;
+            const id = target.dataset.id;
 
-        // 탭 활성화 상태 변경
-        // this(chartTabList) 내부에서 기존 active를 찾아 제거
-        const currentTab = this.querySelector('.chart-tab-active');
-        if (currentTab) currentTab.classList.remove('chart-tab-active');
-        target.classList.add('chart-tab-active');
+            // 탭 활성화 상태 변경
+            // this(chartTabList) 내부에서 기존 active를 찾아 제거
+            const currentTab = this.querySelector('.chart-tab-active');
+            if (currentTab) currentTab.classList.remove('chart-tab-active');
+            target.classList.add('chart-tab-active');
 
-        // 차트 영역 변경
-        chartPanels.forEach(panel => {
-          // 패널의 data-content와 탭의 id가 일치하면 active 추가
-          if (panel.dataset.content === id) {
-            panel.classList.add('active');
-          } else {
-            panel.classList.remove('active');
-          }
+            // 차트 영역 변경
+            chartPanels.forEach(panel => {
+                // 패널의 data-content와 탭의 id가 일치하면 active 추가
+                if (panel.dataset.content === id) {
+                    panel.classList.add('active');
+                } else {
+                    panel.classList.remove('active');
+                }
+            });
         });
-      });
     }
 
-    // 주요 가격 변도 요인 Event 요소 호버 시 
+    // 주요 가격 변도 요인 Event 요소 호버 시
     const eventDetails = document.querySelector('.event .details');
 
     if (eventDetails) {
-      // 마우스가 들어왔을 때
-      eventDetails.addEventListener('mouseover', function (e) {
+        // 마우스가 들어왔을 때
+        eventDetails.addEventListener('mouseover', function (e) {
 
-        const item = e.target.closest('.item');
-        if (!item) return;
+            const item = e.target.closest('.item');
+            if (!item) return;
 
-        // 자식 div를 찾아서 클래스 추가
-        const childDiv = item.querySelector('.hoverItem');
-        // childDiv가 존재하고, 그 안의 텍스트 내용이 비어있지 않은지 확인 (공백 제거 후 체크)
-        if (childDiv && childDiv.textContent.trim().length > 0) {
-          childDiv.classList.add('active');
-        }
-      });
+            // 자식 div를 찾아서 클래스 추가
+            const childDiv = item.querySelector('.hoverItem');
+            // childDiv가 존재하고, 그 안의 텍스트 내용이 비어있지 않은지 확인 (공백 제거 후 체크)
+            if (childDiv && childDiv.textContent.trim().length > 0) {
+                childDiv.classList.add('active');
+            }
+        });
 
-      // 마우스가 나갔을 때
-      eventDetails.addEventListener('mouseout', function (e) {
-        const item = e.target.closest('.item');
-        if (!item) return;
+        // 마우스가 나갔을 때
+        eventDetails.addEventListener('mouseout', function (e) {
+            const item = e.target.closest('.item');
+            if (!item) return;
 
-        // 자식 div를 찾아서 클래스 제거
-        const childDiv = item.querySelector('.hoverItem');
-        if (childDiv) {
-          childDiv.classList.remove('active');
-        }
-      });
+            // 자식 div를 찾아서 클래스 제거
+            const childDiv = item.querySelector('.hoverItem');
+            if (childDiv) {
+                childDiv.classList.remove('active');
+            }
+        });
     }
 
     // --- 챗봇 토글 로직 ---
     const botIcon = document.getElementById("bot-icon");
+    const botImg = botIcon.querySelector(".bot-img");
     const chatWindow = document.getElementById("chat-window");
 
     if (botIcon && chatWindow) {
-      botIcon.addEventListener("click", function (e) {
-        e.stopPropagation();
+        botIcon.addEventListener("click", function (e) {
+            e.stopPropagation();
 
-        chatWindow.classList.toggle("show"); // -> 채팅창 표시 css 용
+            chatWindow.classList.toggle("show"); // -> 채팅창 표시 css 용
 
-        // 챗봇 색상 토글 용
-        if (chatWindow.classList.contains("show")) {
-          this.children[0].classList.add("on");
-        } else {
-          this.children[0].classList.remove("on");
-        }
-      });
+            // 챗봇 색상 토글 용
+            if (chatWindow.classList.contains("show")) {
+                this.children[0].classList.add("on");
+            } else {
+                this.children[0].classList.remove("on");
+            }
+        });
     }
 
     // --- 외부 클릭 시 닫기 로직 ---
     window.addEventListener("click", (e) => {
-      // 챗봇 창이 열려 있고, 클릭한 대상이 챗봇 창이나 아이콘이 아닐 경우 닫기
-      if (
-        chatWindow &&
-        chatWindow.classList.contains("show") &&
-        !chatWindow.contains(e.target) &&
-        !botIcon.contains(e.target)
-      ) {
-        chatWindow.classList.remove("show");
-      }
+        // 챗봇 창이 열려 있고, 클릭한 대상이 챗봇 창이나 아이콘이 아닐 경우 닫기
+        if (
+            chatWindow &&
+            chatWindow.classList.contains("show") &&
+            !chatWindow.contains(e.target) &&
+            !botIcon.contains(e.target)
+        ) {
+            chatWindow.classList.remove("show");
+            botImg.classList.remove("on")
+        }
     });
-  </script>
+</script>
 </body>
 
 </html>

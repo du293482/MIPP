@@ -5,13 +5,15 @@
     flex-direction: column;
     width: 200px;
     background-color: #ebebeb;
+    border-right: 1px solid #e4e5e5;
     .title {
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: 21px;
+        font-size: 22px;
         font-weight: bolder;
         height: 60px;
+        background-color: #ffffff;
     }
     .weeks-list {
         display: flex;
@@ -46,5 +48,5 @@
             }
         }
     }
-    
+
 }

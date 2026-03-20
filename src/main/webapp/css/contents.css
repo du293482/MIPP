@@ -7,15 +7,18 @@
 }
 .week1 .left {
   display: flex;
+  width: 450px;
+  min-width: 450px;
+  max-width: 450px;
   flex-direction: column;
   padding: 20px;
+  background-color: #ffffff;
 }
 .week1 .left .title {
   display: flex;
   align-items: center;
-  -moz-column-gap: 8px;
-       column-gap: 8px;
-  font-size: 26px;
+  column-gap: 8px;
+  font-size: 22px;
   font-weight: bold;
   margin-bottom: 15px;
 }
@@ -27,21 +30,20 @@
 }
 .week1 .left .chart-tab-list {
   display: flex;
-  -moz-column-gap: 3px;
-       column-gap: 3px;
+  column-gap: 3px;
 }
 .week1 .left .chart-tab-list .chart-tab-item {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 26px;
+  font-size: 21px;
   color: #aaaaaa;
   background-color: #f2f4f6;
   border: 1px solid #e4e5e5;
   border-bottom: 0;
   border-radius: 10px 10px 0 0;
-  width: 120px;
-  height: 45px;
+  width: 100px;
+  height: 35px;
   cursor: pointer;
 }
 .week1 .left .chart-tab-list .chart-tab-item.chart-tab-active {
@@ -59,46 +61,56 @@
   height: 1px;
   background-color: #ffffff;
 }
-.week1 .left .chart-panel {
+.week1 .left .chart-container {
+  width: 100%;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  border: 1px solid #e4e5e5;
+  margin-bottom: 20px;
+  border-radius: 0 0 10px 10px;
+}
+.week1 .left .chart-container .chart-panel {
   display: none;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
+  width: 100%;
+  height: 100%;
   font-size: 20px;
   font-weight: 600;
-  width: 580px;
-  height: 640px;
-  min-height: 640px;
-  border: 1px solid #e4e5e5;
-  border-radius: 0 0 10px 10px;
-  margin-bottom: 20px;
 }
-.week1 .left .chart-panel.active {
+.week1 .left .chart-container .chart-panel.active {
   display: flex;
+}
+.week1 .left .chart-container .chart-panel.active #custom-legend {
+  -webkit-animation: slideDown 1s ease-out 0s 1 normal forwards;
+  animation: slideDown 1s ease-out 0s 1 normal forwards;
+}
+.week1 .left .chart-container .chart-panel.active #mi-view-canvas {
+  -webkit-animation: Fade 2s ease-out 0s 1 normal forwards;
+  animation: Fade 2s ease-out 0s 1 normal forwards;
 }
 .week1 .left .explain {
   list-style: disc;
   display: flex;
-  max-width: 580px;
   overflow-y: auto;
-  height: 100%;
   flex-direction: column;
+  width: 100%;
+  flex: 1;
   row-gap: 5px;
   font-weight: bold;
+  border: 1px solid #e4e5e5;
   background-color: #f2f4f6;
   border-radius: 10px;
   padding: 15px 15px 15px 35px;
-  overflow-y: auto;
 }
 .week1 .right {
   display: flex;
   flex-direction: column;
-  row-gap: 30px;
   flex: 1;
+  row-gap: 30px;
   padding: 20px;
   overflow-y: auto;
   background-color: #ebebeb;
-  min-width: 1100px;
 }
 .week1 .right .event {
   display: flex;
@@ -109,8 +121,8 @@
   display: flex;
   align-items: center;
   -moz-column-gap: 8px;
-       column-gap: 8px;
-  font-size: 26px;
+  column-gap: 8px;
+  font-size: 22px;
   font-weight: bold;
 }
 .week1 .right .event .title .red {
@@ -131,16 +143,18 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 21px;
+  font-size: 18px;
   font-weight: bold;
   background-color: #ffffff;
-  height: 100px;
-  border: 5px solid #d9d9d9;
-  border-radius: 10px;
+  height: 70px;
+  border: 1px solid #d9d9d9;
+  border-radius: 100px;
   cursor: pointer;
+  padding: 10px 20px;
 }
 .week1 .right .event .details .item:hover {
   border-color: #ea002c;
+  color: #ea002c;
 }
 .week1 .right .event .details .item .hoverItem {
   display: none;
@@ -160,10 +174,14 @@
 .week1 .right .event .details .item .hoverItem.active li {
   display: flex;
   flex-direction: column;
-  row-gap: 3px;
+  row-gap: 5px;
+}
+.week1 .right .event .details .item .hoverItem.active li .sub-title {
+  font-weight: 700;
 }
 .week1 .right .event .details .item .hoverItem.active li .explain {
   font-size: 14px;
+  word-break: keep-all;
 }
 .week1 .right .event .details .item .hoverItem.active::before {
   content: "";
@@ -187,8 +205,8 @@
   display: flex;
   align-items: center;
   -moz-column-gap: 8px;
-       column-gap: 8px;
-  font-size: 26px;
+  column-gap: 8px;
+  font-size: 22px;
   font-weight: bold;
 }
 .week1 .right .view .title .red {
@@ -209,6 +227,14 @@
   font-weight: bold;
   margin-bottom: 10px;
   padding: 0 0 0 5px;
+  display: flex;
+}
+.week1 .right .view .details .inner-title .icon {
+  display: inline-block;
+  width: 20px;
+  margin-right: 5px;
+  aspect-ratio: 1;
+  background: url("../images/message-square-check.png") no-repeat center/cover;
 }
 .week1 .right .view .details .table-top {
   display: flex;
@@ -250,6 +276,7 @@
   font-size: 18px;
   color: #666666;
   padding: 15px 10px;
+  word-break: keep-all;
 }
 .week1 .right .view .details .table-area table tbody tr td:not(:last-child) {
   border-right: 1px solid #e4e5e5;
@@ -266,8 +293,8 @@
   display: flex;
   align-items: center;
   -moz-column-gap: 8px;
-       column-gap: 8px;
-  font-size: 26px;
+  column-gap: 8px;
+  font-size: 22px;
   font-weight: bold;
 }
 .week1 .right .insight .title .red {
@@ -278,6 +305,7 @@
 }
 .week1 .right .insight .details {
   display: flex;
+  row-gap: 5px;
   list-style: disc;
   flex-direction: column;
   background-color: #ffffff;
@@ -378,4 +406,73 @@
 }
 .week1 .right .event-result.show {
   display: flex;
-}/*# sourceMappingURL=contents.css.map */
+}
+
+@-webkit-keyframes slideAndFade {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@-webkit-keyframes Fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes Fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px); /* 아래로 30px 이동한 상태에서 시작 */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* 원래 위치로 복귀 */
+  }
+}
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px); /* 아래로 30px 이동한 상태에서 시작 */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* 원래 위치로 복귀 */
+  }
+}
+@-webkit-keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px); /* 음수 값을 주어 위에서 시작하도록 설정 */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* 원래 위치로 복귀 */
+  }
+}
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px); /* 음수 값을 주어 위에서 시작하도록 설정 */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* 원래 위치로 복귀 */
+  }
+}
+
+/*# sourceMappingURL=contents.css.map */

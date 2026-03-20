@@ -3,7 +3,7 @@ function getAvr(arr) {
     return Number(avg.toFixed(2));
 }
 
-const ctx = document.getElementById('mi-view-canvas');
+const ctx = document.getElementById('mi-view-canvas').getContext('2d');
 
 // CME 가격-3월 1주
 // CME 가격-3월 2주
@@ -63,6 +63,23 @@ const chart = new Chart(ctx, {
         layout: {
             padding: {left: 10}
         },
+        // animations: {
+        //     // 선이 그려지는 y축 경로 애니메이션
+        //     y: {
+        //         type: 'number',
+        //         duration: 2000,
+        //         easing: 'easeOutQuart',
+        //         from: (ctx) => ctx.chart.scales.y.max, // 위에서 아래로 내려오거나
+        //         // from: (ctx) => ctx.chart.scales.y.min, // 아래에서 위로 올라오는 효과
+        //     },
+        //     // 투명도 조절로 부드럽게 등장
+        //     opacity: {
+        //         easing: 'linear',
+        //         duration: 1500,
+        //         from: 0,
+        //         to: 1
+        //     }
+        // },
         animation: {
             onComplete: () => {
                 delayed = true;
@@ -106,7 +123,7 @@ const chart = new Chart(ctx, {
                     avg2: {
                         type: 'label',
                         xValue: data.labels[2],
-                        yValue: datasets[1].data[2],                        
+                        yValue: datasets[1].data[2],
                         backgroundColor: '#999999aa',
                         content: ['평균 $']+getAvr(datasets[1].data),
                         color: '#333',
@@ -128,7 +145,7 @@ const chart = new Chart(ctx, {
                     avg4: {
                         type: 'label',
                         xValue: data.labels[4],
-                        yValue: datasets[3].data[4],                        
+                        yValue: datasets[3].data[4],
                         backgroundColor: '#f4b400aa',
                         content: ['평균 $'+getAvr(datasets[3].data)],
                         color: '#666',
@@ -139,7 +156,7 @@ const chart = new Chart(ctx, {
                     avg5: {
                         type: 'label',
                         xValue: data.labels[5],
-                        yValue: datasets[4].data[5],                        
+                        yValue: datasets[4].data[5],
                         backgroundColor: '#7cb342aa',
                         content: ['평균 $'+getAvr(datasets[4].data)],
                         color: '#666',
