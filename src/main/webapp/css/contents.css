@@ -63,7 +63,7 @@
 }
 .week1 .left .chart-container {
   width: 100%;
-  aspect-ratio: 4/5;
+  aspect-ratio: 1;
   overflow: hidden;
   border: 1px solid #e4e5e5;
   margin-bottom: 20px;
@@ -80,14 +80,6 @@
 }
 .week1 .left .chart-container .chart-panel.active {
   display: flex;
-}
-.week1 .left .chart-container .chart-panel.active #custom-legend {
-  -webkit-animation: slideDown 1s ease-out 0s 1 normal forwards;
-  animation: slideDown 1s ease-out 0s 1 normal forwards;
-}
-.week1 .left .chart-container .chart-panel.active #mi-view-canvas {
-  -webkit-animation: Fade 2s ease-out 0s 1 normal forwards;
-  animation: Fade 2s ease-out 0s 1 normal forwards;
 }
 .week1 .left .explain {
   list-style: disc;
@@ -406,73 +398,6 @@
 }
 .week1 .right .event-result.show {
   display: flex;
-}
-
-@-webkit-keyframes slideAndFade {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-@-webkit-keyframes Fade {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-@keyframes Fade {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-@-webkit-keyframes slideUp {
-  0% {
-    opacity: 0;
-    transform: translateY(30px); /* 아래로 30px 이동한 상태에서 시작 */
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0); /* 원래 위치로 복귀 */
-  }
-}
-@keyframes slideUp {
-  0% {
-    opacity: 0;
-    transform: translateY(30px); /* 아래로 30px 이동한 상태에서 시작 */
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0); /* 원래 위치로 복귀 */
-  }
-}
-@-webkit-keyframes slideDown {
-  0% {
-    opacity: 0;
-    transform: translateY(-30px); /* 음수 값을 주어 위에서 시작하도록 설정 */
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0); /* 원래 위치로 복귀 */
-  }
-}
-@keyframes slideDown {
-  0% {
-    opacity: 0;
-    transform: translateY(-30px); /* 음수 값을 주어 위에서 시작하도록 설정 */
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0); /* 원래 위치로 복귀 */
-  }
 }
 
 /*# sourceMappingURL=contents.css.map */

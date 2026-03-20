@@ -468,37 +468,6 @@ new Chart(ctx, {
         layout: {
             padding: { top:0, bottom:20, left: 10, right: 20 }
         },
-
-        animations: {
-            y: {
-                type: 'number',
-                duration: 2000,
-                easing: 'easeOutQuart',
-                from: (ctx) => ctx.chart.scales.y.min // 바닥(-2)에서 위로 차오르는 효과
-            },
-            opacity: {
-                type: 'number',
-                duration: 1000,
-                from: 0,
-                to: 1
-            }
-        },
-        animation: {
-            // 데이터 포인트가 많으므로 index별 지연 시간을 주어 왼쪽에서 오른쪽으로 흐르는 느낌 생성
-            delay: (context) => {
-                let delay = 0;
-                if (context.type === 'data' && context.mode === 'default') {
-                    // 데이터 인덱스에 따른 지연 (전체 120개 데이터 기준 약 1.2초 내외 완성)
-                    delay = context.dataIndex * 10;
-
-                    // 예측(Predicted) 및 밴드 데이터셋은 히스토리보다 살짝 늦게 등장하게 추가 시차 부여
-                    if (context.datasetIndex <= 2) {
-                        delay += 500;
-                    }
-                }
-                return delay;
-            }
-        },
         plugins: {
             legend: { display: false },
             annotation: {

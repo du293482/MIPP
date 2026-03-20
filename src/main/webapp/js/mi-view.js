@@ -1,9 +1,12 @@
+/* 평균 계산 함수 */
 function getAvr(arr) {
+    if (!arr || arr.length === 0) return 0;
     const avg = arr.reduce((sum, value) => sum + value, 0) / arr.length;
-    return Number(avg.toFixed(2));
+    return avg.toFixed(2);
 }
 
 const ctx = document.getElementById('mi-view-canvas').getContext('2d');
+const tension = 0.2; // 차트 선 굴곡률
 
 // CME 가격-3월 1주
 // CME 가격-3월 2주
@@ -11,45 +14,38 @@ const ctx = document.getElementById('mi-view-canvas').getContext('2d');
 // MI Base-3월 2주
 // MI Base-3월 3주
 
-const tension = 0.2;
-
 const datasets = [
     {
         label: 'CME 가격-3월 1주',
         data: [13.365,16.485,15.175,14.31,13.75,13.51,13.075,12.91,12.97],
         borderColor: '#cccccc',
         borderDash: [6,6],
-        tension: tension
     },
     {
         label: 'CME 가격-3월 2주',
         data: [16.23,21.145,20.1,19.085,18.435,18.135,17.925,17.71,17.705],
         borderColor: '#999999',
         borderDash: [6,6],
-        tension: tension
     },
     {
         label: 'CME 가격-3월 3주',
         data: [15.275,19.275,18.6,18.065,17.485,17.16,16.775,16.635,16.785],
         borderColor: '#707070',
         borderWidth: 3,
-        tension: tension
     },
     {
         label: 'MI Base-3월 2주',
         data: [16.5,20,19.5,18.8,18,17.6,17.2,16.8,17],
         borderColor: '#f4b400',
         borderWidth: 3,
-        tension: tension
     },
     {
         label: 'MI Base-3월 3주',
         data: [15.5,19,18.5,17.8,17,16.6,16.2,15.8,16],
         borderColor: '#7cb342',
         borderWidth: 3,
-        tension: tension
     }
-];
+].map(ds => ({ ...ds, tension}));
 
 const data = {
     labels: ["4월","5월","6월","7월","8월","9월","10월","11월","12월"],
@@ -60,37 +56,9 @@ const chart = new Chart(ctx, {
     type: 'line',
     data: data,
     options: {
+        aspectRatio : 1,
         layout: {
             padding: {left: 10}
-        },
-        // animations: {
-        //     // 선이 그려지는 y축 경로 애니메이션
-        //     y: {
-        //         type: 'number',
-        //         duration: 2000,
-        //         easing: 'easeOutQuart',
-        //         from: (ctx) => ctx.chart.scales.y.max, // 위에서 아래로 내려오거나
-        //         // from: (ctx) => ctx.chart.scales.y.min, // 아래에서 위로 올라오는 효과
-        //     },
-        //     // 투명도 조절로 부드럽게 등장
-        //     opacity: {
-        //         easing: 'linear',
-        //         duration: 1500,
-        //         from: 0,
-        //         to: 1
-        //     }
-        // },
-        animation: {
-            onComplete: () => {
-                delayed = true;
-            },
-            delay: (context) => {
-                let delay = 0;
-                if (context.type === 'data' && context.mode === 'default' && !delayed) {
-                    delay = context.dataIndex * 300 + context.datasetIndex * 100;
-                }
-                return delay;
-            },
         },
         plugins: {
             legend: { display: false },

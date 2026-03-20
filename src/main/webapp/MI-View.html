@@ -50,10 +50,8 @@
                 <!-- 차트 -->
                 <div class="chart-container" id="chart-container">
                     <div class="chart-panel jkm active" id="jkm-chart" data-content="1">
-                        <canvas id="mi-view-canvas" width="580" height="640"></canvas>
-                        <!--              <canvas id="mi-view-canvas"></canvas>-->
+                        <canvas id="mi-view-canvas"></canvas>
                         <div id="custom-legend"></div>
-                        <script src="js/mi-view.js"></script>
                     </div>
                     <div class="chart-panel hh" data-content="2">HH 차트 내용</div>
                     <div class="chart-panel ttf" data-content="3">TTF 차트 내용</div>
@@ -309,7 +307,7 @@
 
     </div>
 </div>
-
+<script src="js/mi-view.js"></script>
 <script>
     // --- 사이드바 활성화 로직 ---
     const weeksList = document.getElementById('weeks-list');

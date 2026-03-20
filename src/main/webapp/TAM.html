@@ -6,7 +6,6 @@
     <title>TAM</title>
     <link rel="stylesheet" href="./css/tam_style.css" />
     <link rel="stylesheet" href="./css/tam_chart.css" />
-
     <script src="js/chart.js"></script>
     <script src="js/chartjs-plugin-annotation3.0.1.min.js"></script>
 </head>
@@ -199,7 +198,6 @@
                 </div>
                 <div class="canvas-wrapper">
                     <canvas id="spikeChart"></canvas>
-                    <script src="js/tam-spike.js"></script>
                 </div>
             </div>
             <div class="dashed_line"></div>
@@ -242,7 +240,6 @@
                 <div class="part">
                     <div class="chart Regime-chart">
                         <canvas id="regimeChart" height="200"></canvas>
-                        <script src="js/tam-regime.js"></script>
                     </div>
                     <div class="explain_part">
                         <p>ㆍ통계적으로 안정적 패턴</p>
@@ -299,6 +296,8 @@
         </div>
     </div>
 </div>
+<script src="js/tam-regime.js"></script>
+<script src="js/tam-spike.js"></script>
 <script>
     // 토글활성화
     const toggleMenu = document.querySelector(".toggle_menu");
